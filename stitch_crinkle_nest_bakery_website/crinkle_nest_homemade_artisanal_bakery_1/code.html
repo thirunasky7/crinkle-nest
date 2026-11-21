@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#fef9f1","on-secondary":"#ffffff","primary-container":"#3d2314","outline-variant":"#d4c3bc","secondary":"#8e4e08","on-surface-variant":"#50443f","on-primary-fixed-variant":"#5e402f","primary-fixed":"#ffdbca","tertiary":"#21110e","error":"#ba1a1a","outline":"#82746e","on-primary-container":"#af8874","secondary-fixed-dim":"#ffb77c","surface-dim":"#ded9d2","inverse-surface":"#32302b","on-tertiary-fixed-variant":"#58413d","surface-tint":"#795745","background":"#fef9f1","on-tertiary-container":"#a78a85","primary":"#250f03","tertiary-fixed":"#fcdbd5","on-surface":"#1d1c17","on-tertiary-fixed":"#291714","surface-container-high":"#ece8e0","surface-container-lowest":"#ffffff","on-secondary-container":"#733d00","on-error-container":"#93000a","surface-variant":"#e7e2da","surface-bright":"#fef9f1","on-primary":"#ffffff","on-secondary-fixed":"#2e1500","surface-container-low":"#f8f3eb","inverse-on-surface":"#f5f0e8","primary-fixed-dim":"#e9bda7","on-background":"#1d1c17","tertiary-container":"#382521","surface-container-highest":"#e7e2da","tertiary-fixed-dim":"#dfbfba","on-tertiary":"#ffffff","on-primary-fixed":"#2d1608","on-error":"#ffffff","secondary-container":"#fda95f","inverse-primary":"#e9bda7","secondary-fixed":"#ffdcc2","surface-container":"#f2ede5","error-container":"#ffdad6","on-secondary-fixed-variant":"#6d3900"},borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},spacing:{"space-sm":"0.75rem","gutter":"1.5rem","margin":"3rem","space-xl":"3.5rem","gutter-mobile":"1rem","space-md":"1.25rem","space-lg":"2rem","margin-mobile":"1.25rem","space-xs":"0.375rem"},fontFamily:{"title-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Playfair Display"],"display":["Playfair Display"],"display-mobile":["Playfair Display"],"body-md":["Plus Jakarta Sans"],"headline-sm":["Playfair Display"],"headline-md":["Playfair Display"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Playfair Display"],"label-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"]},fontSize:{"title-md":["18px",{"lineHeight":"26px","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"500"}],"display":["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"600"}],"display-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-sm":["22px",{"lineHeight":"30px","fontWeight":"600"}],"headline-md":["28px",{"lineHeight":"36px","fontWeight":"500"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.015em","fontWeight":"500"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.02em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.03em","fontWeight":"600"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05),0_2px_6px_-1px_rgba(200,125,56,0.04)]"><div class="h-20 max-w-[1280px] mx-auto px-margin-mobile md:px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="Crinkle Nest Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGIex2BBi7IXZHELuAtuw-ZGjal2OS6pDGotIZrUPBl_XdcUUKQxyJhAVpK9xatitunOX0rOhuH2sGFOrOQ86i48R_JOo-aDLHFj3dllKlC9S3b09V8ACkvpSg_EqCc42tdJ_lVhAr7Pvbm-uplE2Nz2OE_Z6XE2TIEnTg9QEd-4ZSXsHNPkKzvZZPlUcawFGmHZVITsKKM3dgSbD8xhR1BBrZyHHbwUbxeRP_WlJX"/><a class="flex flex-col" data-path="home" href="#"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">Crinkle Nest</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5">Artisanal Bakery</span></a></div><nav class="hidden lg:flex items-center gap-space-xs bg-surface-container-low/70 p-1.5 rounded-full shadow-[0_2px_8px_rgba(61,35,20,0.03)]" data-active-classes="bg-surface-container-high text-primary font-bold shadow-sm"><a aria-current="page" class="px-space-md py-space-xs rounded-full transition-all bg-surface-container-high text-primary font-bold shadow-sm" data-path="home" href="#">Home</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="menu" href="#">Menu</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="trending" href="#">Trending</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="about-us" href="#">About Us</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-xs bg-secondary text-on-secondary rounded-full font-label-lg text-label-lg shadow-[0_4px_16px_rgba(142,78,8,0.25)] hover:bg-primary hover:text-on-primary transition-all duration-300 transform hover:-translate-y-0.5" href="https://wa.me/91" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[18px]">chat</span><span>WhatsApp Order</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><button aria-label="Toggle Mobile Menu" class="lg:hidden p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-full transition-colors" type="button"><span class="material-symbols-outlined text-[24px]">menu</span></button></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- HERO BANNER -->
+<section class="relative w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin pt-4 pb-12">
+<div class="relative overflow-hidden rounded-3xl bg-surface-container-low shadow-[0_12px_40px_-8px_rgba(61,35,20,0.08)]">
+<!-- Ambient warm glow background accents -->
+<div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-16 w-80 h-80 rounded-full bg-tertiary-fixed/30 blur-2xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10 md:p-14 relative z-10">
+<!-- Text Column -->
+<div class="lg:col-span-7 flex flex-col items-start gap-4">
+<!-- Rating Pill Badge -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-highest/80 backdrop-blur-md text-primary font-label-md text-label-md shadow-sm">
+<span class="text-secondary font-bold">★ 4.9/5</span>
+<span class="w-1 h-1 rounded-full bg-outline"></span>
+<span class="text-on-surface-variant">from 1,200+ happy homes</span>
+</div>
+<!-- Main Heading -->
+<h1 class="font-display text-display text-primary tracking-tight leading-[1.08] max-w-xl">
+            Baked With Love, <span class="italic font-normal text-secondary">Served With Happiness</span>
+</h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+            Freshly baked homemade treats made with love. Slow-whipped batters, crackly sugar tops, and wholesome hearth warmth baked fresh every dawn.
+          </p>
+<!-- Key Guarantees Chips -->
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface text-on-surface font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">local_fire_department</span> Fresh Batch Daily
+            </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface text-on-surface font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">eco</span> Eggless Options
+            </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface text-on-surface font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">format_image_left</span> Zero Preservatives
+            </span>
+</div>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-3 pt-3">
+<a class="px-7 py-3.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-[0_6px_20px_-2px_rgba(37,15,3,0.3)] hover:bg-secondary transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2" href="#menu-catalog">
+<span>Explore Our Menu</span>
+<span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+</a>
+<a class="px-7 py-3.5 rounded-full bg-[#1e7e48] text-white font-label-lg text-label-lg shadow-[0_6px_20px_-2px_rgba(30,126,72,0.35)] hover:bg-[#155d34] transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20place%20an%20order.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>Order on WhatsApp</span>
+</a>
+</div>
+</div>
+<!-- Visual Hero Column with Image from Prompt Reference -->
+<div class="lg:col-span-5 relative">
+<div class="relative mx-auto max-w-md lg:max-w-none">
+<!-- Hero Image Shell -->
+<div class="relative overflow-hidden rounded-2xl shadow-[0_16px_36px_-6px_rgba(61,35,20,0.18)] aspect-[4/3] sm:aspect-square">
+<img alt="Freshly baked crinkle cookies, fudge brownies, and warm cappuccino on rustic wooden table" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASq4BVHIqfTv1ngcFzreprdLUC0I3OtzBlM65Q1WQjmtX0_enKZl54GB_J1xDrCGlQSnz0aDRc5eZZnn3fCm_VjClYzgV-nHqpb26_Q89Vj1gSKs7d1Bu6YlEycCzTLTsZabsLYe57BIS61sq5ZP-JYNUXmSY7Un6Pf0_tejI6ErwDW4DgVDFHz9yYWNf7D_2pwfR-M88mpptTIJJJqT7pa4W2RfFvmOWl5xBNfdOB"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent"></div>
+<!-- Floating Pill on Image -->
+<div class="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-surface/90 backdrop-blur-md shadow-md">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[20px]">cookie</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary leading-tight">Fresh Scent of Cocoa &amp; Spice</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Morning Hearth Batch Ready</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-semibold">Ready</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SHORTS SECTION: Fresh From Our Oven -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+<div>
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[16px]">videocam</span> Behind The Scenes
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Fresh From Our Oven</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Watch our daily baking rituals &amp; behind the scenes magic unfold in small batches.</p>
+</div>
+<!-- Scroll Buttons -->
+<div class="hidden sm:flex items-center gap-2">
+<button aria-label="Previous shorts" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('shorts-track', -300)">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next shorts" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('shorts-track', 300)">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Shorts Track -->
+<div class="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x scroll-smooth no-scrollbar" id="shorts-track" style="scrollbar-width: none;">
+<!-- Reel 1 -->
+<div class="snap-start shrink-0 w-[200px] sm:w-[230px] rounded-2xl overflow-hidden relative group shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container">
+<div class="aspect-[9/16] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up high-angle macro video frame of chocolate crinkle cookies crackling and expanding into beautiful powdery white fractures on rustic parchment paper inside a warm oven" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4tfuPvzy7ZQVp5IDwgEoPTOeECuoR4rY4EJvUU3GArZ0O1euZy1iP9VZ1KisJuj6z-WNEvXoJ-0xdmL_UCXl7IMfEu4F-n8qB0JI8SqQM1elwsRwS0jK_xZTxg1ZKxv02c-PWg_COyjRDyNfaXYBgYkWaXVG6qLFi9yr1htSQ6JUpr7YqMC1O2PlsuAvPrGvoRRBoa4lKMC9GtrLhndSImbHXnKBKPvBTMRyA5Ii6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-black/20"></div>
+<span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white font-label-sm text-label-sm backdrop-blur-sm">0:34</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-11 h-11 rounded-full bg-surface/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px] ml-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 text-white">
+<p class="font-title-md text-[14px] leading-snug line-clamp-2 drop-shadow-sm font-semibold">The Signature Crinkle Cookie Crackle</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 14.8k views
+            </div>
+</div>
+</div>
+</div>
+<!-- Reel 2 -->
+<div class="snap-start shrink-0 w-[200px] sm:w-[230px] rounded-2xl overflow-hidden relative group shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container">
+<div class="aspect-[9/16] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Overhead bakery shot of thick luscious dark fudge brownie batter being slowly folded and swirled with a silicone spatula into a parchment lined square metal baking pan with glossy chocolate ribbons" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh52fQjeDS6YmgZ5hsaalNezVmogmEnJeRev34Aq15EeYDjGJ1aYJ4qZUbFpHj9eI0qpJx_7GnmPFW7bU9ZOxtBF8dmZN0zzuqB8aDgapGwqOe32NahqZRFrMqLqj5SbYBGBiMGIxFO0j1KespMJjcsGOwQjWFeEuqR0atXTstr5c6Dh9aaLqRZEAb-tWxX9HxIVmSp5aLVCoo4NdEwuWYrU7QDbHnSuqo-irbe5H2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-black/20"></div>
+<span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white font-label-sm text-label-sm backdrop-blur-sm">0:45</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-11 h-11 rounded-full bg-surface/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px] ml-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 text-white">
+<p class="font-title-md text-[14px] leading-snug line-clamp-2 drop-shadow-sm font-semibold">Swirling Double Dark Fudgy Brownie Batter</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 21.2k views
+            </div>
+</div>
+</div>
+</div>
+<!-- Reel 3 -->
+<div class="snap-start shrink-0 w-[200px] sm:w-[230px] rounded-2xl overflow-hidden relative group shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container">
+<div class="aspect-[9/16] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Steam rising from hot golden butter coin biscuits on a large baking sheet pulled straight out of a traditional brick hearth stone oven by a baker in linen apron" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGulHZIApqo1C4CEo0NGjMZQqquiAdXla0B0u_EEbOwkNmjN7tsoslNuqd-sDMEECdEF2r2RKUb0sWKtttDEMkdZzJDhMCnRwLNFBU2YsBwxEBcV6YkW3It6kmaovoml7iAonFD1Wuvgp-5QXPWSFKKKhxeG4a_GFsK9Epo0_HVXqAIrTqpu-0pZZpU_jGGyYXPaIMYoiEnFc4drD1rpxdgUGvNzv1eptrX-EE6Yd5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-black/20"></div>
+<span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white font-label-sm text-label-sm backdrop-blur-sm">0:28</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-11 h-11 rounded-full bg-surface/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px] ml-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 text-white">
+<p class="font-title-md text-[14px] leading-snug line-clamp-2 drop-shadow-sm font-semibold">Golden Coin Biscuits Coming Out Hot!</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 9.4k views
+            </div>
+</div>
+</div>
+</div>
+<!-- Reel 4 -->
+<div class="snap-start shrink-0 w-[200px] sm:w-[230px] rounded-2xl overflow-hidden relative group shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container">
+<div class="aspect-[9/16] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Fine stainless steel sieve dusting cloud-like white powdered confectioner sugar over scarlet red velvet brownie cubes with soft cream cheese frosting swirls on artisan kitchen counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSfnOvDlvA0aVgdzvO2gcfsGxaydwqtSh_BtNmDVe9BdpYkPq_RqeXBykfk70zxa3a4j3ZMHZ4cp86Om2otupCOmN21dJ1MDijPXO9GaiYBFwZkTAk2yeQ-MirwvwQCQI9RoNXOrXc5ag-GPR6sUUDB_FBnTqnhg47mhhB8_TcA9cYLuBoVYtFgTnMHte9Zb0XVcAWkdOO0vc0qfcwynw7kLygAy84pnvScBvv1xOb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-black/20"></div>
+<span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white font-label-sm text-label-sm backdrop-blur-sm">0:39</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-11 h-11 rounded-full bg-surface/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px] ml-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 text-white">
+<p class="font-title-md text-[14px] leading-snug line-clamp-2 drop-shadow-sm font-semibold">Dusting Snow Sugar on Red Velvet</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 18.6k views
+            </div>
+</div>
+</div>
+</div>
+<!-- Reel 5 -->
+<div class="snap-start shrink-0 w-[200px] sm:w-[230px] rounded-2xl overflow-hidden relative group shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container">
+<div class="aspect-[9/16] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Hands neatly arranging artisanal cookies and fudge brownies inside a soft blush pink boutique gift box with botanical satin ribbon, wax seal stamp, and handwritten personalized parchment note" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb8Zj0bwvpUd-5Z5AOTV7szDP7Jm92F0VErMld4VgVafnzuPLoLFYWxW2G4DavK9zzEVXgVgooloD_uXeY2Qq1yMFJQbRMbg8H60PQyGpGFgICC73x1s15PErKEXGi-v2lh4ZLqvGDkxDH60mipfhBnFNXCoHG9qtWA0zxH0b5h-z_dYvDo7GctROaQzvVsG5r2xukHh8PtcgGAVWDcbOipqT-J8fpKOakJMwYHhAM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-black/20"></div>
+<span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white font-label-sm text-label-sm backdrop-blur-sm">0:52</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-11 h-11 rounded-full bg-surface/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px] ml-0.5" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 text-white">
+<p class="font-title-md text-[14px] leading-snug line-clamp-2 drop-shadow-sm font-semibold">Packing Happiness in Our Pastel Gift Boxes</p>
+<div class="flex items-center gap-1.5 mt-1 text-[11px] text-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 26.5k views
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TRENDING NOW SECTION -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-10" id="trending-section">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+<div>
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> Best Sellers
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Trending Now</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Most loved by our neighborhood foodies and repeated week after week.</p>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Previous trending items" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('trending-track', -340)">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next trending items" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('trending-track', 340)">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Horizontally Scrollable Product Carousel -->
+<div class="flex gap-6 overflow-x-auto pb-6 pt-2 snap-x scroll-smooth no-scrollbar" id="trending-track" style="scrollbar-width: none;">
+<!-- Product 1 -->
+<div class="snap-start shrink-0 w-[280px] sm:w-[320px] rounded-2xl bg-surface-container-lowest p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] flex flex-col justify-between hover:shadow-[0_12px_32px_-4px_rgba(61,35,20,0.12)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Crinkle Nest signature powdered chocolate crinkle cookies arranged neatly in an open pastel gift box showing crispy exterior fractures and soft dark chocolate center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmlcdJ0dI4JW4_ShgpkOKibDXFlA-q5x9WGSWN1RTfF_s9l_O8AvKsKz4twdRWPM_KrytlCGcP7YEnTplVmCbA39D4Vw4_oZ8-0GkeJ_s_jhSvj2kt3nnBZuBMoBSlUUOKM9TrQ7FMXGLFHsctyqqEbUFqF0RFNfecMiJDnGcUND1uyaWWQ9iS7KyPXW7aXExYAQAgBmtlBhZBNHjmJ5OHNJ4PsfCzjrX56vDaplep"/>
+<span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm shadow-sm">Signature</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Signature Crinkle Cookie Box (Pack of 6)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Crisp exterior with melt-in-mouth fudgy chocolate core, hand-dusted with powdered sugar.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between border-t-0">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹380</span>
+</div>
+<a class="px-4 py-2 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1.5" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Signature%20Crinkle%20Cookie%20Box%20(Pack%20of%206).%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span> Order
+          </a>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="snap-start shrink-0 w-[280px] sm:w-[320px] rounded-2xl bg-surface-container-lowest p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] flex flex-col justify-between hover:shadow-[0_12px_32px_-4px_rgba(61,35,20,0.12)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Luscious thick square chocolate fudge brownie slab topped with toasted golden Kashmiri walnut chunks and dark chocolate ganache drip" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPaGnHfZ0RZ7g_8pfDtq-wktmHTCClwKfbP2XY_x4XcB5oe3crbL_pjNa6Yg_Z5dr1YUHtutTNS8Y3rCFHMGV2z6H5OUjkQwegtz-enV3t3PuN0DfVxFAUVlO_EhbazxIHyI2LooHSuRuLcdzGrcP8PiDxNzoI77_KI0xa3F-wFTan6WSi-Ev1Yyon9GEz1-vlw7F1OFyXW3iFTMnoh67dLpaYiBMvtjTQk31m3_qq"/>
+<span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm shadow-sm">Bestseller</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Fudgy Walnut Brownie Slab</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Loaded with roasted Kashmiri walnuts and 70% dark Belgian cocoa with thick shiny crackly crust.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹420</span>
+</div>
+<a class="px-4 py-2 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1.5" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Fudgy%20Walnut%20Brownie%20Slab.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span> Order
+          </a>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="snap-start shrink-0 w-[280px] sm:w-[320px] rounded-2xl bg-surface-container-lowest p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] flex flex-col justify-between hover:shadow-[0_12px_32px_-4px_rgba(61,35,20,0.12)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Vintage round tin filled with stacked golden mini butter coin biscuits, warm golden sunlight streaming through bakery window onto rustic wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8DyCE9my0XwnasZ1sSihXm0vHJvNroIjKl_FR43_fl9pvRxG8MmuELLjjZhIEh2cDSSKzK7W3OFxKl-YbKC2Fwec6ePCVfuNngfEPndiKU4FaXQLSNGV2gL8l8-WElBx2pWAHMNxIevPUoT_jCJ5n99OT58wv5ZzWFRtu-Gi7Q_Tw_I9OPjeMm_mUTfUG85fsOOMuHdLigmUq15nyao1p8c1fdNpqHSYDoUARpSFc"/>
+<span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold shadow-sm">Nostalgia</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Classic Butter Coin Biscuits Tin</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Nostalgic golden bite-sized melt-in-mouth crunch baked with pure dairy butter and warm vanilla notes.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹260</span>
+</div>
+<a class="px-4 py-2 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1.5" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Classic%20Butter%20Coin%20Biscuits%20Tin.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span> Order
+          </a>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="snap-start shrink-0 w-[280px] sm:w-[320px] rounded-2xl bg-surface-container-lowest p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] flex flex-col justify-between hover:shadow-[0_12px_32px_-4px_rgba(61,35,20,0.12)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Exquisite bakery hamper box displaying assorted desserts including square fudge brownies, chocolate crinkle cookies, and jars of coin biscuits with dried flowers and festive bow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxNBg0OU5Do6g5sWdpMK9OQ-9gm4uNO4zr_gufBTtTDoRYzei7_ABBgWOUtSQtrEuoKGXm_XNfpKW7sAsWTVFtkOG9nHThrObA74Tv9BlGuav8-zzO2IXCYXypUZ3MNe7RQvw2KI5wELaeDY7Jx0N-cr_Ng7mZaucpDc6YPQjjx8PcMAKuYhqNgPg-TY9s45-s4p2LvRsvKHAmzw-aC-_0c2mAVLDdarbmAjY-SLXQ"/>
+<span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-tertiary text-on-tertiary font-label-sm text-label-sm shadow-sm">Celebration</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Assorted Celebration Dessert Box</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Handcrafted bundle of brownies, cookies &amp; coin biscuits packed in our signature blush gift container.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹750</span>
+</div>
+<a class="px-4 py-2 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1.5" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Assorted%20Celebration%20Dessert%20Box.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">chat</span> Order
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- BROWNIE SECTION -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-10" id="brownies">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+<div>
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[16px]">cake</span> Handcrafted Indulgence
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Brownie</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Dense, fudgy, decadent handcrafted brownies baked fresh every morning.</p>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Previous brownie items" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('brownie-track', -320)">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next brownie items" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('brownie-track', 320)">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Brownie 6 varieties carousel -->
+<div class="flex gap-5 overflow-x-auto pb-6 pt-2 snap-x scroll-smooth no-scrollbar" id="brownie-track" style="scrollbar-width: none;">
+<!-- Variety 1 -->
+<div class="snap-start shrink-0 w-[270px] sm:w-[300px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Classic chocolate brownie square with paper thin glossy papery top crust and intensely dark fudgy cocoa texture on parchment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3G_zIEdIBM4FaFExMwxJFiIK6i9dDEU-_DJtUTVtc2Q4hgpdQRtlJac_r3w2GfkgNMqcYWK2Rg27trFEs0albhz2jgMZdXjdn8vj0DjRtz-JpdP_dAFxSXik1FBiONa7_3Yw4Ebl0RRzxh06TYrrQSoY8l7GwjzcMOYflDPr5no6OGXYkQ2ZvrYw3yegi47rC1yXDtAGSOFZPt64l1C6FweNJcP_wmYYhC_wV_DE3"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Classic Chocolate Brownie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Pure Belgian dark chocolate indulgence with crisp crackly crust.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹140</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Classic%20Chocolate%20Brownie.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 2 -->
+<div class="snap-start shrink-0 w-[270px] sm:w-[300px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Gooey dark fudge brownie slice densely packed with toasted golden walnut pieces and light dusting of cinnamon cocoa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvyVPUvNEfRdVSwHJBlw9kY_Ee9AlT0C_CpmXA8dlTrgYEJrq6JC-p5Afpao4U-YFoojKpLLmjWRIib1s5cNjWndIq8WlOhFLHSwTPuLyiubAC-Fsxqa6EeqnYURwDYMA9EVpkGjZ1jKca8O0edY6aDo_nOUSsGAjg3FNgeePHwNcy_ffINSCxzLDB7TYLVkFMlNV-AALptvr0MjqoxdjAbIkDP4lfsKLajJICHzao"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Fudgy Walnut Brownie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Gooey chocolate brownie studded with crunchy golden roasted walnuts.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹160</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Fudgy%20Walnut%20Brownie.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 3 -->
+<div class="snap-start shrink-0 w-[270px] sm:w-[300px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Double chocolate brownie cut open revealing molten dark chocolate chunks melting in the warm chocolate crumb" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLsQkr9wU-jFJy4pmyN54zvj1uSefn6ztpwPeIckkOw1oQDWgPo8pf352HjlKCLggAiCEYUXxJCoj7xoe6rMTS22lrIHFFDGwek90WwRdTmAU6A7WCaf5FAb2Rkei9TEz0vx8bnF_sSkLhdMdfUqLFeVSZAgUGiHX2k3uc76eOQS-zpnrfj0U6dScEJL35PojZBY-S-JNg-L3bGEFxJ0rgN-o-UXr0ZbwyMJPI7sWD"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Double Chocolate Brownie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Rich chocolate base packed with melted bittersweet chocolate chunks.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹170</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Double%20Chocolate%20Brownie.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 4 -->
+<div class="snap-start shrink-0 w-[270px] sm:w-[300px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Chewy cocoa brownie topped with an abundance of glistening dark and milk chocolate chips on a ceramic dessert saucer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmk7IrrRf_Mau--ih4RVvAXsF4bwOgKegRc8AHI61GvcK9afxYp4uSmNzgmdOWt7ydYY7Xc0I_k7z41GX1zQe4E7ycXNlP9o7mpNyEkjUTA46c6liGQruVEz7nmpRiZYGs6TBmMunBiz2cj8i_4Mwn1nceQfMcm11AbjAsew90_es4iDQmKobajYMrhB-fNncH7TgvLzi-MjrRUU-5IPnhcc8crcFwYJXGVDt7cVRW"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Choco Chip Brownie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Chewy brownie topped generously with premium dark and milk choco chips.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹150</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Choco%20Chip%20Brownie.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 5 -->
+<div class="snap-start shrink-0 w-[270px] sm:w-[300px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Square dark chocolate brownie with whole crushed Oreo sandwich cookies baked right into the top crust with vanilla cream swirls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6JU-d1fLrv2n_7CJ95B_NCAO_rtLFBgQfEVTquUOV9XnmuRtFPJW2e7HJjDQNo1IjkDIZQntHJG4niQabA30Z2O-zUB4nDDovUOkBd47ljAYznZWFeNd4tNZP6vdfaTMiHruUMmTFoAGunBPHos6zC8CbXhFlCMZcsVYt7seMms9Pox7Y8cW71_NN-H1t55OjgAoQcOFbbO_7_nlFeL04WT8RMDG_PBwb-vGpLqXW"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Oreo Brownie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Fudgy brownie baked with whole crushed Oreo biscuits and cream layers.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹165</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Oreo%20Brownie.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 6 -->
+<div class="snap-start shrink-0 w-[270px] sm:w-[300px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Vibrant ruby red velvet brownie square topped with an artful swirl of ivory cream cheese frosting and fine red velvet crumbs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVy8LZSre9iMk1c8791SWxzXOn8bJA_TUxhhvNdg463tgFNap0rK8NRBnRQScZCdwA04BdFVtHEDBjpJeDqh-bzFYmzZd5V2diwpwOMnIt7Spea8AGzvPCiLlfaHTNHwoO2_kAiPRqBdxFfNV6BKxTemKWZnEWnmIOtWN-bwQ0uZMfpvU89oFI0jD9I5AZpbtq_aXcEX0HYRA0TkZitwW_xRCHCzke5H6YGjIf4Ztr"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Red Velvet Brownie</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Velvety cocoa crimson cake with a swirl of rich cream cheese frosting.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹180</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Red%20Velvet%20Brownie.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- COIN BISCUIT SECTION -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-10" id="coin-biscuits">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+<div>
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[16px]">stars</span> Bite-Sized Nostalgia
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Coin Biscuit</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Tiny golden discs of nostalgic joy, baked till perfectly crisp.</p>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Previous biscuit items" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('biscuit-track', -300)">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next biscuit items" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('biscuit-track', 300)">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Horizontally Scrollable 5 Coin Biscuit Varieties -->
+<div class="flex gap-5 overflow-x-auto pb-6 pt-2 snap-x scroll-smooth no-scrollbar" id="biscuit-track" style="scrollbar-width: none;">
+<!-- Variety 1 -->
+<div class="snap-start shrink-0 w-[260px] sm:w-[285px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Heap of tiny golden baked coin biscuits on brown bakery parchment paper with crisp edges and buttery sheen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQx4ebwYLPH-0EIJjn32iPqwoZBz2QuLM4zq3Za5hC5j6SzPRM5LylseyZmBpvSM4uYdL5EZ05iD23PQoD3DwrZhFe4JS2BG09eTLdVrgqhOtf4WMPSstmM2MbU-mRNxlsTcPT4n3XeOnpqsNnqeItDvC2h-_uKrzuaX8wybEo3C7CueYFyVxaFOQ5zQJKkOaelHgriE4t9Vo8KDZ_MdrRguCxzTxU0jf_IuHgXNxU"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Classic Coin Biscuit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Traditional crisp golden buttery discs with delicate sweetness.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price (200g)</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹120</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Classic%20Coin%20Biscuit%20(200g).%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 2 -->
+<div class="snap-start shrink-0 w-[260px] sm:w-[285px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Small round chocolate coin biscuits dusted with brown organic sugar in a glass jar next to roasted cocoa beans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB3SsVz5uqHow-tWdd1U7CHZepeShgaKBc4FfzOy3oVXr7XW4voZnznu_RhDswAu8C63UnWdoXCJ7BAAThQWAy7Lngj2glr7MMN7oPtqMqmPVI9BzAy_Ny03tG_bRn1aJoiE5tezen8EIMchAP8T47wZXxmc4OYRGpsHDZot12HNZd2We2tT-QElUsyEk7x99ZTNK_X1O1VU2gAtfAUc5vwjP3VObIwlQgyIk8qnMO"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Chocolate Coin Biscuit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Infused with rich cocoa and a dusting of brown sugar for an earthy crunch.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price (200g)</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹140</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Chocolate%20Coin%20Biscuit%20(200g).%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 3 -->
+<div class="snap-start shrink-0 w-[260px] sm:w-[285px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Light golden buttery coin biscuits stacked closely together showcasing fine delicate crumb and buttery gloss" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy4oPI-D1UtXFInBbyppmv5DHcM0dDIivb9UCEVK4-IscIYimtvbPtVF0UwIu9g5qtS53Nqln-gu-5UO9V8CPmpgWtRbYof9hR8IPzS2VxdxGegutylolqEawaJWkRgBs6Mq7eDATp4kBXEi6O8_FiXzCfxj2I7pChAHThoD3RRqoRWPx0uFZzVSliVwZFC9X4r0oXy6yMbKjTIWyqyeiFwqmMAo0XNtVHav0ACMuq"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Butter Coin Biscuit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Made with 100% farm-fresh butter that melts in your mouth instantly.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price (200g)</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹150</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Butter%20Coin%20Biscuit%20(200g).%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 4 -->
+<div class="snap-start shrink-0 w-[260px] sm:w-[285px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Savory toasted cumin jeera coin biscuits with visible roasted jeera seeds embedded into crunchy biscuit surface next to a cup of masala chai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfkbZl1P0JlIfn-zLGi6F_R5h0WuYQvNHZ2IJ4RLL7UJuYBI6uD8jDsxSbiqguLkMdostTxHiw93xkXq6rZ_8ZV2qbwIYmda_XPc8TB8Bl9SdpaPni5Sp6D2IksDnhkZ0jR2505UgcR3GYhooyR6TmMBUBVbgMN0kqtayYfu43AOyN9xOd5a13TDBv7GxwgoBbFzNV5nXQQ9xoWMArCke4kKkMq3U9kNwYMzdsGJ9f"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Jeera Coin Biscuit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Slightly sweet and savory crunch with aromatic roasted cumin seeds.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price (200g)</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹130</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Jeera%20Coin%20Biscuit%20(200g).%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+<!-- Variety 5 -->
+<div class="snap-start shrink-0 w-[260px] sm:w-[285px] rounded-2xl bg-surface-container-low p-4 shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between hover:bg-surface-container-lowest hover:shadow-[0_10px_28px_-4px_rgba(61,35,20,0.1)] transition-all">
+<div>
+<div class="relative rounded-xl overflow-hidden aspect-[4/3] mb-4 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Creamy milk coin biscuits arranged around a glass of warm milk on a vintage pastel tablecloth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACufBxRfWH_Gb5x-sgeFQNYjhxKGFHybBUJmyXqzLGR8-i1ASY-ZNmfQflZMZgbj57ORovX6vSEBJG7kk-bYt1i3SDFppwY541Bc-Qo3bS9IV6oB6iN69L81jcjI7O-PJLWbW60eDDfIV6mKCCx4ic2YVlZDy9feTnkdwCqir0c6Dyzo5rawfQnFvlBqdDG2h07ySWWPgwDnpe7YnFctQKWoh0L-aXpyIpS0Ow_Mn3"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Milk Coin Biscuit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Rich condensed milk flavor, perfect for your evening chai or coffee.</p>
+</div>
+<div class="pt-4 mt-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Price (200g)</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹125</span>
+</div>
+<a class="px-3.5 py-1.5 rounded-full bg-[#1e7e48] text-white font-label-md text-label-md shadow-sm hover:bg-[#155d34] transition-all inline-flex items-center gap-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20Milk%20Coin%20Biscuit%20(200g).%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">chat</span> WhatsApp
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- MORE BAKERY COLLECTIONS -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-10" id="menu-catalog">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+<div>
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[16px]">menu_book</span> Explore Categories
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary">More Bakery Collections</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Discover handcrafted sweets baked every morning with artisanal finesse.</p>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Previous category" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('collections-track', -300)">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button aria-label="Next category" class="w-10 h-10 rounded-full bg-surface-container-high text-primary hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center shadow-sm" onclick="scrollSection('collections-track', 300)">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Category Showcase Cards -->
+<div class="flex gap-5 overflow-x-auto pb-6 pt-2 snap-x scroll-smooth no-scrollbar" id="collections-track" style="scrollbar-width: none;">
+<!-- Category 1: Cookies -->
+<a class="group snap-start shrink-0 w-[240px] sm:w-[270px] rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container block" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20explore%20your%20Cookies%20collection." rel="noopener noreferrer" target="_blank">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Stacked artisanal cookies including chunky chocolate chip cookies, brookies and chocolate crinkles with sprinkled sea salt on wooden board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbbW_mDBO_zQrBMuor02jD0wY-uMlD56weyLOP965n3ZbHKSolw7nHeRCvCU564L1-bCLxSOTMcZBJ5NwUN_d0GC69In0ogloRGNJjxjyoBM79PIjGobiZPW5xxw62tZdZRxvu12L6ZcyRyd5QcY2SaKr4jcBhqZmTT9xU8XV92CWWKXOkSlq_8ibsloGRXY3nRJ-r9bK7M1Qb-mFsC5prlRKy_5_YXYopaB16clbj"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+<span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm font-semibold">12 varieties</span>
+<div class="absolute bottom-4 left-4 right-4 text-white">
+<h3 class="font-headline-sm text-headline-sm text-white">Cookies</h3>
+<p class="font-body-sm text-body-sm text-surface-container-highest mt-1 line-clamp-2">Chunky NY style, Brookies &amp; Classic Crinkles</p>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary-fixed mt-2">
+              Browse &amp; Order <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</a>
+<!-- Category 2: Cakes -->
+<a class="group snap-start shrink-0 w-[240px] sm:w-[270px] rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container block" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20explore%20your%20Cakes%20collection." rel="noopener noreferrer" target="_blank">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Bespoke miniature bento cake decorated with pastel buttercream flora and piped lettering beside an elegant layered naked sponge cake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz84Aodlh1OATH_3js9wioBb0DyR6mvLZD51YWe1h91nQ62SX8qLSDXZNtRoACll96lu41zTFh7JvpcU1SRo39OGysj8am1QmAby6s24emyOYQiG06TIg9dKthVdLwdGz7bBHlMGgb5SSpwfiJ5FPpMwg5bOjdx5kNRPIHWNPtZ4DujRQ43QT-ZfCtuRVMVXhXpQU6BwGgOiTrlVu_FQpr-iVXB_51Aanc0ZGhoffR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+<span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm font-semibold">8 varieties</span>
+<div class="absolute bottom-4 left-4 right-4 text-white">
+<h3 class="font-headline-sm text-headline-sm text-white">Cakes</h3>
+<p class="font-body-sm text-body-sm text-surface-container-highest mt-1 line-clamp-2">Bento cakes, layered gateaux &amp; naked sponge cakes</p>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary-fixed mt-2">
+              Browse &amp; Order <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</a>
+<!-- Category 3: Cupcakes -->
+<a class="group snap-start shrink-0 w-[240px] sm:w-[270px] rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container block" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20explore%20your%20Cupcakes%20collection." rel="noopener noreferrer" target="_blank">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Artisanal fluffy cupcakes topped with tall swirl of vanilla bean buttercream frosting and dark berry compote drizzle in fluted baking cups" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpsnofpMPJ0CbgiHVsj2RaOa1eyzTNXO7G-FzzJrHkw2xAjm8KJzS37SexOQOHguLR8e-3eJ1B9savd-7Kqr-OVU80ojYr9qAnVrHkm66Rxv-YKfjhw7K3_ATpgZ8wsUFTQobEEk_uWKpIDAJf1o-8wbOBwAtn6GjzPTyPFgGMrWDH-ocRLCuw3A4Dakjk-uEMgOXf7fo5FmB4bLQWx2-AQcpFqcL-CT8Gn2VdTacs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+<span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm font-semibold">10 varieties</span>
+<div class="absolute bottom-4 left-4 right-4 text-white">
+<h3 class="font-headline-sm text-headline-sm text-white">Cupcakes</h3>
+<p class="font-body-sm text-body-sm text-surface-container-highest mt-1 line-clamp-2">Whipped buttercream tops &amp; hidden fruit compote</p>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary-fixed mt-2">
+              Browse &amp; Order <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</a>
+<!-- Category 4: Muffins -->
+<a class="group snap-start shrink-0 w-[240px] sm:w-[270px] rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container block" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20explore%20your%20Muffins%20collection." rel="noopener noreferrer" target="_blank">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Golden bakery muffins bursting with juicy blue blueberries and buttery streusel crumb crown fresh from the oven on cooling rack" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHanjXp-ffaGobcWSZNLA9fBLUSUrNuwTC_Olj1HtIPyASdO2yXSxwAGJ7KxDIFksorQUM7opeQVUX9UraYz2kML1Qnvob_cYtf4pyKm-V1LNiBbevULczgbcMDBRg9r6AwlkmlIeZ8JOFxbBIyI35NfF9jWglNnh4lIaY79hUpigCvnjrxhYk4shGIw0iUX8QyHJatofWp5F7UVCcw57MwX3jgCrhGDBRacdw3qtw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+<span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm font-semibold">6 varieties</span>
+<div class="absolute bottom-4 left-4 right-4 text-white">
+<h3 class="font-headline-sm text-headline-sm text-white">Muffins</h3>
+<p class="font-body-sm text-body-sm text-surface-container-highest mt-1 line-clamp-2">Blueberry crumb, banana walnut &amp; double choco</p>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary-fixed mt-2">
+              Browse &amp; Order <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</a>
+<!-- Category 5: Dessert Boxes -->
+<a class="group snap-start shrink-0 w-[240px] sm:w-[270px] rounded-2xl overflow-hidden relative shadow-[0_4px_20px_-2px_rgba(61,35,20,0.06)] bg-surface-container block" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20explore%20your%20Dessert%20Boxes." rel="noopener noreferrer" target="_blank">
+<div class="aspect-[3/4] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Luxurious dessert gift hamper box filled with assorted brownies, coin biscuit tins, handcrafted chocolate bars and seasonal floral sprigs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIYtUSw-bKQk9YzN2YOA4KgwUMyz20yCa78k-24MMx8MOpnfnRT9CE1sDU6wKVcdMEVhnSqU50rPd_qnzAZN5sswMqfZglvIXz2ihmQKlqRcBDzpIoMNc2MwMjVLFTJIF838z72yNpqR5CleIXoexoqV_4VlGVG3a1cI-U8KQD5cTaZoffYuR4kildOOexHGhF7JQTVlprxZo-VKmzVfoQNYpcMUH6T8NCQyXjos-E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent"></div>
+<span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm font-semibold">5 curated boxes</span>
+<div class="absolute bottom-4 left-4 right-4 text-white">
+<h3 class="font-headline-sm text-headline-sm text-white">Dessert Boxes</h3>
+<p class="font-body-sm text-body-sm text-surface-container-highest mt-1 line-clamp-2">Customizable gift hampers &amp; festive celebratory boxes</p>
+<span class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary-fixed mt-2">
+              Browse &amp; Order <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</a>
+</div>
+</section>
+<!-- SPECIAL PROMOTIONAL BANNER -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-8">
+<div class="relative overflow-hidden rounded-3xl bg-tertiary-fixed/40 p-8 sm:p-12 md:p-14 shadow-[0_8px_30px_rgba(61,35,20,0.06)]">
+<!-- Decorative background blur -->
+<div class="absolute -top-16 -right-16 w-80 h-80 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+<div class="max-w-2xl relative z-10 flex flex-col items-start gap-4">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface/80 text-primary font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">redeem</span> Gifting &amp; Celebrations
+        </div>
+<h2 class="font-display text-display text-primary tracking-tight leading-tight">
+          A Little Box Full of Happiness!
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Make every celebration sweeter with Crinkle Nest. Freshly custom-packed for birthdays, anniversaries, and sweet cravings.
+        </p>
+<!-- Delivery Perks -->
+<div class="flex flex-wrap items-center gap-2 pt-2 text-primary font-label-md text-label-md">
+<span class="inline-flex items-center gap-1 bg-surface/80 px-3 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_shipping</span> Same-Day Local Delivery
+          </span>
+<span class="inline-flex items-center gap-1 bg-surface/80 px-3 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">oven_gen</span> Freshly Baked On Order
+          </span>
+<span class="inline-flex items-center gap-1 bg-surface/80 px-3 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span> Zero Preservatives
+          </span>
+</div>
+<div class="pt-3">
+<a class="px-8 py-3.5 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-[0_6px_20px_-2px_rgba(37,15,3,0.3)] hover:bg-secondary transition-all transform hover:-translate-y-0.5 inline-flex items-center gap-2.5" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20order%20a%20Little%20Box%20Full%20of%20Happiness!%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>Order Your Treats</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ABOUT US SECTION -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-12" id="about-us">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Image Column using Prompt's IMAGE_2 reference -->
+<div class="lg:col-span-6 relative">
+<div class="relative overflow-hidden rounded-3xl shadow-[0_16px_36px_-6px_rgba(61,35,20,0.14)] aspect-[4/3] sm:aspect-[16/11]">
+<img alt="Smiling female baker in linen apron holding a freshly baked tray of golden cookies and brownies in front of warm brick hearth oven in cozy rustic bakery" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc6YQWlL0BcXbZzGBNOzIiEfIql_frWo-k-kNluVkQrgy01Tv_Y17R-ZQ9qWqrYqV884KIYTgHu6Z8kWUXpx67MKWXwmu3bnt08P4Z5M7hO_NLgAdLG9uGbkLdY6a1qU4R_jno9wPcYIBEObzbZNCADa0ppDs43eIlc7ui_VxH5kcqYLadtJ5ogtARt8qVaTgtLfz9wjJJZ00ATyqF3RJa2Fy075_J60eoICXjUXaq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent"></div>
+</div>
+<!-- Decorative Badge -->
+<div class="absolute -bottom-5 -right-2 sm:right-6 bg-surface-container-lowest px-4 py-3 rounded-2xl shadow-[0_10px_25px_-5px_rgba(61,35,20,0.12)] flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[22px]">favorite</span>
+</div>
+<div>
+<p class="font-title-md text-[14px] text-primary font-bold leading-none">Crafted by Hand</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Every single morning</p>
+</div>
+</div>
+</div>
+<!-- Text Column -->
+<div class="lg:col-span-6 flex flex-col items-start gap-4">
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">nest_eco_leaf</span> Our Story
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary leading-tight">
+          A Little About Crinkle Nest
+        </h2>
+<!-- Verbatim text as instructed -->
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Crinkle Nest is a homemade bakery that believes every bite should feel special. We bake fresh, delicious treats with love and care, bringing homemade happiness straight to your doorstep.
+        </p>
+<!-- Brand Highlights -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full pt-2">
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col items-start gap-1">
+<span class="material-symbols-outlined text-secondary text-[22px]">spa</span>
+<span class="font-title-md text-[14px] text-primary font-bold">100% Eggless</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Options available</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col items-start gap-1">
+<span class="material-symbols-outlined text-secondary text-[22px]">check_circle</span>
+<span class="font-title-md text-[14px] text-primary font-bold">No Artificial</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Pure wholesome ingredients</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col items-start gap-1">
+<span class="material-symbols-outlined text-secondary text-[22px]">bakery_dining</span>
+<span class="font-title-md text-[14px] text-primary font-bold">Small-Batch</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Slow artisanal process</span>
+</div>
+</div>
+<div class="pt-2">
+<a class="px-6 py-3 rounded-full bg-secondary text-on-secondary font-label-md text-label-md shadow-sm hover:bg-primary transition-all inline-flex items-center gap-2" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I'd%20love%20to%20know%20more%20about%20your%20baking%20schedule%20and%20specials." rel="noopener noreferrer" target="_blank">
+<span>Chat With Our Baker</span>
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- QUICK ORDER FAQ & ASSURANCE -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-8 mb-4">
+<div class="bg-surface-container-low rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[26px]">chat_bubble</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary">Need a custom box or party order?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We customize batch sizes, eggless variations, and customized notes on request.</p>
+</div>
+</div>
+<a class="shrink-0 px-6 py-3 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:bg-secondary transition-all inline-flex items-center gap-2" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20have%20a%20custom%20order%20inquiry." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">send</span> Send Custom Inquiry
+      </a>
+</div>
+</section>
+<!-- FLOATING WHATSAPP CTA -->
+<aside class="fixed bottom-6 right-6 z-50">
+<a aria-label="Order on WhatsApp" class="relative group flex items-center gap-2.5 px-4 py-3 bg-[#1e7e48] text-white rounded-full shadow-[0_10px_28px_-2px_rgba(30,126,72,0.4)] hover:bg-[#155d34] transition-all duration-300 transform hover:-translate-y-1" href="https://wa.me/?text=Hi%20Crinkle%20Nest!%20I%20would%20like%20to%20place%20an%20order.%20Please%20share%20the%20details." rel="noopener noreferrer" target="_blank">
+<!-- Pulsing radar ring indicator -->
+<span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400"></span>
+</span>
+<div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[19px] text-white">chat</span>
+</div>
+<span class="font-label-lg text-label-lg font-semibold tracking-wide pr-1">Order on WhatsApp</span>
+</a>
+</aside>
+<!-- Interactive Scroll Script for Carousel Controls -->
+<script>
+    function scrollSection(containerId, distance) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        container.scrollBy({ left: distance, behavior: 'smooth' });
+      }
+    }
+  </script>
+</div></main><aside class="fixed bottom-6 right-6 z-50"><a aria-label="Order on WhatsApp" class="group flex items-center gap-space-sm pl-space-md pr-space-lg py-space-sm bg-secondary text-on-secondary rounded-full shadow-[0_12px_32px_-4px_rgba(61,35,20,0.25),0_4px_12px_-2px_rgba(200,125,56,0.2)] hover:bg-primary hover:text-on-primary transition-all duration-300 transform hover:-translate-y-1" href="https://wa.me/91" rel="noopener noreferrer" target="_blank"><div class="w-8 h-8 rounded-full bg-on-secondary/15 flex items-center justify-center"><span class="material-symbols-outlined text-[20px] text-on-secondary">chat</span></div><div class="flex flex-col text-left"><span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed leading-none">Direct Hearth Orders</span><span class="font-title-md text-title-md font-semibold leading-tight text-on-secondary">+91 WhatsApp</span></div></a></aside><footer class="w-full bg-surface-container-low mt-space-xl pt-space-xl pb-space-lg shadow-[0_-2px_16px_rgba(61,35,20,0.03)]"><div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-lg mb-space-xl"><div class="lg:col-span-4 flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-primary">Crinkle Nest</span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Handcrafted slow-fermented breads, delicate lamination, and bespoke celebration cakes baked fresh every dawn in our hearth boutique.</p><div class="flex items-center gap-space-sm pt-space-xs"><a aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all" href="#"><span class="material-symbols-outlined text-[18px]">photo_camera</span></a><a aria-label="Store Location" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all" href="#"><span class="material-symbols-outlined text-[18px]">location_on</span></a><a aria-label="Email Inquiries" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-secondary hover:text-on-secondary transition-all" href="#"><span class="material-symbols-outlined text-[18px]">mail</span></a></div></div><div class="lg:col-span-3 flex flex-col gap-space-xs"><h4 class="font-title-md text-title-md text-primary mb-space-xs">Curated Bakes</h4><ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant"><li class="hover:text-primary transition-colors"><a href="#">Sourdough &amp; Country Loaves</a></li><li class="hover:text-primary transition-colors"><a href="#">Flaky Croissants &amp; Danishes</a></li><li class="hover:text-primary transition-colors"><a href="#">Signature Crinkle Cookies</a></li><li class="hover:text-primary transition-colors"><a href="#">Bespoke Botanique Cakes</a></li><li class="hover:text-primary transition-colors"><a href="#">Weekend Morning Specials</a></li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><h4 class="font-title-md text-title-md text-primary mb-space-xs">Quick Links</h4><ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant"><li class="hover:text-primary transition-colors"><a href="#">Our Philosophy</a></li><li class="hover:text-primary transition-colors"><a href="#">Dietary &amp; Ingredients</a></li><li class="hover:text-primary transition-colors"><a href="#">Custom Cake Inquiry</a></li><li class="hover:text-primary transition-colors"><a href="#">Pickup &amp; Delivery Info</a></li><li class="hover:text-primary transition-colors"><a href="#">FAQs</a></li></ul></div><div class="lg:col-span-3 flex flex-col gap-space-xs"><h4 class="font-title-md text-title-md text-primary mb-space-xs">The Bakehouse</h4><p class="font-body-md text-body-md text-on-surface-variant">42 Artisan Lane, Heritage Quarter<br/>Open Tue – Sun: 7:30 AM – 8:00 PM</p><p class="font-body-md text-body-md text-on-surface-variant pt-2">Direct line: +91 98765 43210<br/>hello@crinklenest.com</p></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant/80 bg-surface-container/40 p-space-md rounded-xl"><p>© 2025 Crinkle Nest Artisanal Bakery. All rights reserved.</p><div class="flex items-center gap-space-md"><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" href="#">Terms of Service</a><a class="hover:text-primary transition-colors" href="#">FSSAI Certified</a></div></div></div></footer></body></html>

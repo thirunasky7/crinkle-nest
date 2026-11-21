@@ -1,0 +1,391 @@
+<?php
+
+use App\Models\Category;
+use App\Models\Coupon;
+use App\Models\DeliverySlot;
+use App\Models\Faq;
+use App\Models\Menu;
+use App\Models\Page;
+use App\Models\Product;
+use App\Models\Section;
+use App\Models\Testimonial;
+use App\Models\User;
+use App\Models\Video;
+
+/*
+|--------------------------------------------------------------------------
+| Admin CRUD resources
+|--------------------------------------------------------------------------
+| Each entry drives a full list / create / edit / delete screen in the admin
+| panel (App\Http\Controllers\Admin\ResourceController).
+|
+| Field types: text, textarea, html, image, video, number, decimal, checkbox,
+| select, color, date, icon, url, password, keyvalue
+*/
+
+$sectionItemFields = [
+    ['name' => 'icon', 'label' => 'Icon', 'type' => 'icon'],
+    ['name' => 'title', 'label' => 'Title', 'type' => 'text'],
+    ['name' => 'subtitle', 'label' => 'Subtitle', 'type' => 'text'],
+    ['name' => 'description', 'label' => 'Description', 'type' => 'textarea'],
+    ['name' => 'label', 'label' => 'Label / Badge', 'type' => 'text'],
+    ['name' => 'value', 'label' => 'Value / Extra text', 'type' => 'text'],
+    ['name' => 'link', 'label' => 'Link', 'type' => 'text'],
+    ['name' => 'image', 'label' => 'Image', 'type' => 'image'],
+    ['name' => 'sort', 'label' => 'Order', 'type' => 'number'],
+    ['name' => 'is_active', 'label' => 'Visible', 'type' => 'checkbox', 'default' => true],
+];
+
+return [
+    'groups' => [
+        'Catalogue' => ['products', 'categories', 'videos'],
+        'Content' => ['sections', 'pages', 'testimonials', 'faqs', 'menus'],
+        'Shop' => ['coupons', 'delivery-slots', 'customers'],
+    ],
+
+    'resources' => [
+        'products' => [
+            'model' => Product::class,
+            'title' => 'Products',
+            'singular' => 'Product',
+            'icon' => 'cookie',
+            'order' => ['sort', 'asc'],
+            'search' => ['name', 'short_description'],
+            'filter' => ['field' => 'category_id', 'label' => 'Category', 'options' => [Category::class, 'name']],
+            'slug' => 'name',
+            'columns' => [
+                'image' => ['label' => '', 'type' => 'image'],
+                'name' => ['label' => 'Name'],
+                'category.name' => ['label' => 'Category'],
+                'price' => ['label' => 'Price', 'type' => 'money'],
+                'is_trending' => ['label' => 'Trending', 'type' => 'bool'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+                'sort' => ['label' => 'Order'],
+            ],
+            'fields' => [
+                ['name' => 'name', 'label' => 'Product name', 'type' => 'text', 'required' => true],
+                ['name' => 'category_id', 'label' => 'Category', 'type' => 'select', 'options' => [Category::class, 'name'], 'empty' => '— No category —'],
+                ['name' => 'image', 'label' => 'Product image', 'type' => 'image'],
+                ['name' => 'image_alt', 'label' => 'Image alt text', 'type' => 'text'],
+                ['name' => 'short_description', 'label' => 'Short description (cards)', 'type' => 'textarea'],
+                ['name' => 'detail_line', 'label' => 'Detail line (cart, orders, recommendations)', 'type' => 'text', 'help' => 'e.g. Box of 6 • Belgian 70% Dark Chocolate'],
+                ['name' => 'price', 'label' => 'Price', 'type' => 'decimal', 'required' => true],
+                ['name' => 'price_label', 'label' => 'Price label', 'type' => 'text', 'help' => 'e.g. Price (200g). Leave empty to use the category label.'],
+                ['name' => 'badge', 'label' => 'Badge on image', 'type' => 'text', 'help' => 'e.g. Signature, Bestseller'],
+                ['name' => 'badge_style', 'label' => 'Badge colour', 'type' => 'select', 'options' => Product::BADGE_STYLES],
+                ['name' => 'tag', 'label' => 'Dietary tag (cart)', 'type' => 'text', 'help' => 'e.g. Eggless'],
+                ['name' => 'tag_note', 'label' => 'Tag note (cart)', 'type' => 'text'],
+                ['name' => 'image_tag', 'label' => 'Small image tag (cart)', 'type' => 'text', 'help' => 'e.g. Oven 7:30 AM'],
+                ['name' => 'reco_note', 'label' => 'Recommendation note', 'type' => 'text', 'help' => 'e.g. Bakes in 15 mins'],
+                ['name' => 'icon', 'label' => 'Icon (when shown as cart upsell)', 'type' => 'icon'],
+                ['name' => 'whatsapp_message', 'label' => 'Custom WhatsApp message', 'type' => 'text', 'help' => 'Optional. Use {product} and {site}. Defaults to the message in Settings → WhatsApp.'],
+                ['name' => 'is_trending', 'label' => 'Show in “Trending Now”', 'type' => 'checkbox'],
+                ['name' => 'is_recommended', 'label' => 'Show in cart “Frequently Paired”', 'type' => 'checkbox'],
+                ['name' => 'is_upsell', 'label' => 'Cart upsell (“Pair with…”) ', 'type' => 'checkbox'],
+                ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
+                ['name' => 'is_active', 'label' => 'Active (visible on site)', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'categories' => [
+            'model' => Category::class,
+            'title' => 'Categories',
+            'singular' => 'Category',
+            'icon' => 'category',
+            'order' => ['sort', 'asc'],
+            'search' => ['name'],
+            'slug' => 'name',
+            'columns' => [
+                'image' => ['label' => '', 'type' => 'image'],
+                'name' => ['label' => 'Name'],
+                'show_on_home' => ['label' => 'Home carousel', 'type' => 'bool'],
+                'show_in_collections' => ['label' => 'Collections card', 'type' => 'bool'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+                'sort' => ['label' => 'Order'],
+            ],
+            'fields' => [
+                ['name' => 'name', 'label' => 'Name', 'type' => 'text', 'required' => true],
+                ['name' => 'slug', 'label' => 'URL slug', 'type' => 'text', 'help' => 'Leave empty to generate from the name.'],
+                ['name' => 'eyebrow', 'label' => 'Eyebrow text', 'type' => 'text', 'help' => 'Small caps label above the title, e.g. Handcrafted Indulgence'],
+                ['name' => 'eyebrow_icon', 'label' => 'Eyebrow icon', 'type' => 'icon'],
+                ['name' => 'subtitle', 'label' => 'Section description', 'type' => 'textarea'],
+                ['name' => 'image', 'label' => 'Collection card image', 'type' => 'image'],
+                ['name' => 'card_description', 'label' => 'Collection card text', 'type' => 'text'],
+                ['name' => 'badge', 'label' => 'Collection card badge', 'type' => 'text', 'help' => 'e.g. 12 varieties'],
+                ['name' => 'price_label', 'label' => 'Default price label', 'type' => 'text', 'help' => 'e.g. Price (200g)'],
+                ['name' => 'link', 'label' => 'Custom card link', 'type' => 'text', 'help' => 'Optional. Leave empty to open the category menu page. Use {whatsapp} for a WhatsApp chat.'],
+                ['name' => 'show_on_home', 'label' => 'Show as product carousel on Home page', 'type' => 'checkbox'],
+                ['name' => 'show_in_collections', 'label' => 'Show in “More Bakery Collections”', 'type' => 'checkbox', 'default' => true],
+                ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
+                ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'videos' => [
+            'model' => Video::class,
+            'title' => 'Videos (Shorts)',
+            'singular' => 'Video',
+            'icon' => 'smart_display',
+            'order' => ['sort', 'asc'],
+            'search' => ['title'],
+            'columns' => [
+                'thumbnail' => ['label' => '', 'type' => 'image'],
+                'title' => ['label' => 'Title'],
+                'duration' => ['label' => 'Duration'],
+                'views_label' => ['label' => 'Views'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+                'sort' => ['label' => 'Order'],
+            ],
+            'fields' => [
+                ['name' => 'title', 'label' => 'Title', 'type' => 'text', 'required' => true],
+                ['name' => 'thumbnail', 'label' => 'Thumbnail / cover image (9:16)', 'type' => 'image'],
+                ['name' => 'video_file', 'label' => 'Upload video (MP4 / WebM)', 'type' => 'video'],
+                ['name' => 'video_url', 'label' => 'Or video link', 'type' => 'url', 'help' => 'YouTube / YouTube Shorts / Vimeo / direct .mp4 link. Used when no file is uploaded.'],
+                ['name' => 'duration', 'label' => 'Duration label', 'type' => 'text', 'help' => 'e.g. 0:34'],
+                ['name' => 'views_label', 'label' => 'Views label', 'type' => 'text', 'help' => 'e.g. 14.8k views'],
+                ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
+                ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'sections' => [
+            'model' => Section::class,
+            'title' => 'Page Content',
+            'singular' => 'Section',
+            'icon' => 'dashboard_customize',
+            'order' => ['sort', 'asc'],
+            'search' => ['name', 'title', 'key'],
+            'filter' => ['field' => 'page', 'label' => 'Page', 'options' => Section::PAGES],
+            'can_create' => false,
+            'can_delete' => false,
+            'columns' => [
+                'name' => ['label' => 'Section'],
+                'page' => ['label' => 'Page', 'type' => 'map', 'map' => Section::PAGES],
+                'title' => ['label' => 'Title', 'limit' => 60],
+                'is_active' => ['label' => 'Visible', 'type' => 'bool'],
+            ],
+            'fields' => [
+                ['name' => 'name', 'label' => 'Section name (admin only)', 'type' => 'text', 'required' => true],
+                ['name' => 'is_active', 'label' => 'Show this section on the website', 'type' => 'checkbox', 'default' => true],
+                ['name' => 'eyebrow', 'label' => 'Eyebrow / small label', 'type' => 'text'],
+                ['name' => 'eyebrow_icon', 'label' => 'Eyebrow icon', 'type' => 'icon'],
+                ['name' => 'title', 'label' => 'Title', 'type' => 'textarea', 'rows' => 2],
+                ['name' => 'title_highlight', 'label' => 'Title highlight (italic caramel part)', 'type' => 'text'],
+                ['name' => 'subtitle', 'label' => 'Subtitle / paragraph', 'type' => 'textarea'],
+                ['name' => 'body', 'label' => 'Additional paragraph', 'type' => 'textarea'],
+                ['name' => 'image', 'label' => 'Main image', 'type' => 'image'],
+                ['name' => 'image_alt', 'label' => 'Main image alt text', 'type' => 'text'],
+                ['name' => 'image2', 'label' => 'Second image', 'type' => 'image'],
+                ['name' => 'image3', 'label' => 'Third image', 'type' => 'image'],
+                ['name' => 'button_text', 'label' => 'Button text', 'type' => 'text'],
+                ['name' => 'button_link', 'label' => 'Button link', 'type' => 'text', 'help' => 'Path (/menu), anchor (#menu-catalog), full URL, {whatsapp} or {whatsapp:Your pre-filled message}'],
+                ['name' => 'button2_text', 'label' => 'Second button text', 'type' => 'text'],
+                ['name' => 'button2_link', 'label' => 'Second button link', 'type' => 'text'],
+                ['name' => 'extra', 'label' => 'More texts in this section', 'type' => 'keyvalue', 'help' => 'Small labels, badges and captions used by this section.'],
+            ],
+            'repeater' => [
+                'relation' => 'items',
+                'label_field' => 'items_label',
+                'label' => 'Section items',
+                'fields' => $sectionItemFields,
+            ],
+        ],
+
+        'pages' => [
+            'model' => Page::class,
+            'title' => 'Policy Pages',
+            'singular' => 'Page',
+            'icon' => 'gavel',
+            'order' => ['id', 'asc'],
+            'search' => ['title', 'slug'],
+            'slug' => 'title',
+            'view_url' => '/page/{slug}',
+            'columns' => [
+                'title' => ['label' => 'Title'],
+                'slug' => ['label' => 'URL', 'type' => 'prefix', 'prefix' => '/page/'],
+                'is_active' => ['label' => 'Published', 'type' => 'bool'],
+                'updated_at' => ['label' => 'Updated', 'type' => 'date'],
+            ],
+            'fields' => [
+                ['name' => 'title', 'label' => 'Title', 'type' => 'text', 'required' => true],
+                ['name' => 'title_highlight', 'label' => 'Title highlight (italic part)', 'type' => 'text'],
+                ['name' => 'slug', 'label' => 'URL slug', 'type' => 'text', 'help' => 'Page URL will be /page/{slug}'],
+                ['name' => 'status_chip', 'label' => 'Status chip', 'type' => 'text', 'help' => 'e.g. Policies • Last Updated: October 2025'],
+                ['name' => 'subtitle', 'label' => 'Intro paragraph', 'type' => 'textarea'],
+                ['name' => 'directory_label', 'label' => 'Sidebar directory title', 'type' => 'text'],
+                ['name' => 'content', 'label' => 'Free content (optional, above the clauses)', 'type' => 'html'],
+                ['name' => 'meta_title', 'label' => 'SEO title', 'type' => 'text'],
+                ['name' => 'meta_description', 'label' => 'SEO description', 'type' => 'text'],
+                ['name' => 'is_active', 'label' => 'Published', 'type' => 'checkbox', 'default' => true],
+            ],
+            'repeater' => [
+                'relation' => 'sections',
+                'label' => 'Clauses / sections',
+                'fields' => [
+                    ['name' => 'eyebrow', 'label' => 'Eyebrow', 'type' => 'text'],
+                    ['name' => 'icon', 'label' => 'Icon', 'type' => 'icon'],
+                    ['name' => 'title', 'label' => 'Heading', 'type' => 'text', 'required' => true],
+                    ['name' => 'nav_title', 'label' => 'Short title (sidebar)', 'type' => 'text'],
+                    ['name' => 'content', 'label' => 'Content', 'type' => 'html'],
+                    ['name' => 'sort', 'label' => 'Order', 'type' => 'number'],
+                    ['name' => 'is_active', 'label' => 'Visible', 'type' => 'checkbox', 'default' => true],
+                ],
+            ],
+        ],
+
+        'testimonials' => [
+            'model' => Testimonial::class,
+            'title' => 'Testimonials',
+            'singular' => 'Testimonial',
+            'icon' => 'reviews',
+            'order' => ['sort', 'asc'],
+            'search' => ['name', 'quote'],
+            'columns' => [
+                'avatar' => ['label' => '', 'type' => 'image'],
+                'name' => ['label' => 'Name'],
+                'role' => ['label' => 'Role'],
+                'rating' => ['label' => 'Rating'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+            ],
+            'fields' => [
+                ['name' => 'name', 'label' => 'Customer name', 'type' => 'text', 'required' => true],
+                ['name' => 'role', 'label' => 'Role / location', 'type' => 'text'],
+                ['name' => 'avatar', 'label' => 'Photo', 'type' => 'image'],
+                ['name' => 'quote', 'label' => 'Quote', 'type' => 'textarea', 'required' => true],
+                ['name' => 'rating', 'label' => 'Rating (1-5)', 'type' => 'number', 'default' => 5, 'min' => 1, 'max' => 5],
+                ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
+                ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'faqs' => [
+            'model' => Faq::class,
+            'title' => 'FAQs',
+            'singular' => 'FAQ',
+            'icon' => 'help',
+            'order' => ['sort', 'asc'],
+            'search' => ['question', 'answer'],
+            'columns' => [
+                'question' => ['label' => 'Question'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+                'sort' => ['label' => 'Order'],
+            ],
+            'fields' => [
+                ['name' => 'question', 'label' => 'Question', 'type' => 'text', 'required' => true],
+                ['name' => 'answer', 'label' => 'Answer', 'type' => 'textarea', 'required' => true],
+                ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
+                ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'menus' => [
+            'model' => Menu::class,
+            'title' => 'Navigation Menus',
+            'singular' => 'Menu link',
+            'icon' => 'menu',
+            'order' => ['sort', 'asc'],
+            'search' => ['label', 'url'],
+            'filter' => ['field' => 'location', 'label' => 'Location', 'options' => Menu::LOCATIONS],
+            'columns' => [
+                'label' => ['label' => 'Label'],
+                'location' => ['label' => 'Location', 'type' => 'map', 'map' => Menu::LOCATIONS],
+                'url' => ['label' => 'Link'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+                'sort' => ['label' => 'Order'],
+            ],
+            'fields' => [
+                ['name' => 'location', 'label' => 'Location', 'type' => 'select', 'options' => Menu::LOCATIONS, 'required' => true],
+                ['name' => 'label', 'label' => 'Label', 'type' => 'text', 'required' => true],
+                ['name' => 'url', 'label' => 'Link', 'type' => 'text', 'required' => true, 'help' => 'Path (/about), anchor (/#trending-section), full URL, or {whatsapp}'],
+                ['name' => 'match', 'label' => 'Highlight when URL matches', 'type' => 'text', 'help' => 'Optional, e.g. menu (header active state)'],
+                ['name' => 'new_tab', 'label' => 'Open in new tab', 'type' => 'checkbox'],
+                ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
+                ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'coupons' => [
+            'model' => Coupon::class,
+            'title' => 'Coupons & Vouchers',
+            'singular' => 'Coupon',
+            'icon' => 'loyalty',
+            'order' => ['id', 'desc'],
+            'search' => ['code', 'description'],
+            'columns' => [
+                'code' => ['label' => 'Code'],
+                'description' => ['label' => 'Description'],
+                'type' => ['label' => 'Type'],
+                'value' => ['label' => 'Value'],
+                'used_count' => ['label' => 'Used'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+            ],
+            'fields' => [
+                ['name' => 'code', 'label' => 'Code', 'type' => 'text', 'required' => true, 'uppercase' => true],
+                ['name' => 'description', 'label' => 'Description (shown to customers)', 'type' => 'text'],
+                ['name' => 'icon', 'label' => 'Icon', 'type' => 'icon', 'default' => 'percent'],
+                ['name' => 'type', 'label' => 'Discount type', 'type' => 'select', 'options' => ['fixed' => 'Fixed amount', 'percent' => 'Percentage'], 'required' => true],
+                ['name' => 'value', 'label' => 'Discount value', 'type' => 'decimal', 'required' => true],
+                ['name' => 'min_order', 'label' => 'Minimum order amount', 'type' => 'decimal', 'default' => 0],
+                ['name' => 'max_uses', 'label' => 'Maximum uses (empty = unlimited)', 'type' => 'number'],
+                ['name' => 'expires_at', 'label' => 'Expires on', 'type' => 'date'],
+                ['name' => 'show_in_profile', 'label' => 'Show in customer profile vouchers', 'type' => 'checkbox', 'default' => true],
+                ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'delivery-slots' => [
+            'model' => DeliverySlot::class,
+            'title' => 'Delivery Slots',
+            'singular' => 'Delivery slot',
+            'icon' => 'schedule',
+            'order' => ['sort', 'asc'],
+            'search' => ['title'],
+            'columns' => [
+                'day_label' => ['label' => 'Day'],
+                'title' => ['label' => 'Title'],
+                'time_range' => ['label' => 'Time'],
+                'is_custom' => ['label' => 'Custom date', 'type' => 'bool'],
+                'is_active' => ['label' => 'Active', 'type' => 'bool'],
+            ],
+            'fields' => [
+                ['name' => 'day_label', 'label' => 'Day label', 'type' => 'text', 'required' => true, 'help' => 'e.g. Today, Tomorrow, Bespoke'],
+                ['name' => 'title', 'label' => 'Slot title', 'type' => 'text', 'required' => true],
+                ['name' => 'time_range', 'label' => 'Time range', 'type' => 'text'],
+                ['name' => 'badge', 'label' => 'Badge', 'type' => 'text'],
+                ['name' => 'is_custom', 'label' => 'Customer chooses a date', 'type' => 'checkbox'],
+                ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
+                ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'customers' => [
+            'model' => User::class,
+            'title' => 'Customers & Admins',
+            'singular' => 'User',
+            'icon' => 'group',
+            'order' => ['id', 'desc'],
+            'search' => ['name', 'last_name', 'email', 'phone'],
+            'columns' => [
+                'avatar' => ['label' => '', 'type' => 'image'],
+                'name' => ['label' => 'Name'],
+                'email' => ['label' => 'Email'],
+                'phone' => ['label' => 'Phone'],
+                'points' => ['label' => 'Points'],
+                'is_admin' => ['label' => 'Admin', 'type' => 'bool'],
+            ],
+            'fields' => [
+                ['name' => 'name', 'label' => 'First name', 'type' => 'text', 'required' => true],
+                ['name' => 'last_name', 'label' => 'Last name', 'type' => 'text'],
+                ['name' => 'email', 'label' => 'Email', 'type' => 'email', 'required' => true, 'unique' => true],
+                ['name' => 'phone', 'label' => 'Phone', 'type' => 'text'],
+                ['name' => 'avatar', 'label' => 'Photo', 'type' => 'image'],
+                ['name' => 'location_label', 'label' => 'Area', 'type' => 'text'],
+                ['name' => 'birthday', 'label' => 'Birthday', 'type' => 'text'],
+                ['name' => 'points', 'label' => 'Reward points', 'type' => 'number', 'default' => 0],
+                ['name' => 'tier', 'label' => 'Loyalty tier', 'type' => 'text'],
+                ['name' => 'password', 'label' => 'Password', 'type' => 'password', 'help' => 'Leave empty to keep the current password.'],
+                ['name' => 'is_admin', 'label' => 'Admin panel access', 'type' => 'checkbox'],
+            ],
+        ],
+    ],
+];
