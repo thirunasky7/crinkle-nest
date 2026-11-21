@@ -25,7 +25,7 @@
             <h1 class="font-display text-display-mobile md:text-display text-primary tracking-tight">{{ $current->name ?? $head->title }}</h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant">{{ $current->subtitle ?? $head->subtitle }}</p>
         </div>
-        <div class="flex gap-2 overflow-x-auto no-scrollbar pt-6">
+        <div class="m-bleed flex gap-2 overflow-x-auto no-scrollbar pt-6">
             <a href="{{ route('menu') }}" class="shrink-0 px-5 py-2.5 rounded-full font-label-lg text-label-lg transition-all {{ ! $current ? 'bg-primary text-on-primary shadow-sm' : 'bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container' }}">All</a>
             @foreach($categories as $cat)
             <a href="{{ route('menu.category', $cat->slug) }}" class="shrink-0 px-5 py-2.5 rounded-full font-label-lg text-label-lg transition-all {{ optional($current)->id === $cat->id ? 'bg-primary text-on-primary shadow-sm' : 'bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container' }}">{{ $cat->name }}</a>
@@ -35,7 +35,7 @@
 
     @foreach($groups as $group)
     @if($group['products']->count())
-    <section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-8" id="{{ $group['slug'] }}">
+    <section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-8 m-tight" id="{{ $group['slug'] }}">
         @if(! $current)
         <div class="mb-6">
             @if($group['eyebrow'])<div class="inline-flex items-center gap-1.5 text-secondary font-label-md text-label-md uppercase tracking-wider mb-1"><span class="material-symbols-outlined text-[16px]">{{ $group['icon'] }}</span> {{ $group['eyebrow'] }}</div>@endif
@@ -43,9 +43,9 @@
             @if($group['subtitle'])<p class="font-body-md text-body-md text-on-surface-variant mt-1">{{ $group['subtitle'] }}</p>@endif
         </div>
         @endif
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
             @foreach($group['products'] as $product)
-                @include('partials.product-card', ['product' => $product, 'variant' => 'category', 'priceLabel' => $group['price_label'], 'buttonText' => section('home.collections')->x('product_button_text', 'WhatsApp'), 'extraClass' => '!w-auto'])
+                @include('partials.product-card', ['product' => $product, 'variant' => 'category', 'priceLabel' => $group['price_label'], 'buttonText' => section('home.collections')->x('product_button_text', 'WhatsApp'), 'extraClass' => '!w-auto min-w-0'])
             @endforeach
         </div>
     </section>

@@ -4,8 +4,22 @@
     {
       "name": "crinkle-nest",
       "runtimeExecutable": "php",
-      "runtimeArgs": ["artisan", "serve", "--host=127.0.0.1", "--port=8000"],
+      "runtimeArgs": [
+        "artisan",
+        "serve",
+        "--host=127.0.0.1",
+        "--port=8000"
+      ],
       "port": 8000
+    },
+    {
+      "name": "crinkle-nest-localdb",
+      "runtimeExecutable": "C:/Program Files/Git/bin/bash.exe",
+      "runtimeArgs": [
+        "-c",
+        "export DB_CONNECTION=mysql DB_HOST=127.0.0.1 DB_PORT=3306 DB_DATABASE=crinkle_nest DB_USERNAME=root DB_PASSWORD= APP_URL=http://127.0.0.1:8002; cd public && php -S 127.0.0.1:8002 ../vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php"
+      ],
+      "port": 8002
     }
   ]
 }

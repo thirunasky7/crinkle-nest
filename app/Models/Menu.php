@@ -15,6 +15,7 @@ class Menu extends Model
         'footer_bakes' => 'Footer: Curated Bakes column',
         'footer_quick' => 'Footer: Quick Links column',
         'footer_bottom' => 'Footer: bottom bar links',
+        'mobile_tabbar' => 'Mobile: bottom tab bar (max 5)',
     ];
 
     public static function at(string $location)

@@ -97,16 +97,16 @@
 </div>
 
 @if($pillars->is_active)
-<section class="w-full bg-surface-container-low py-space-xl my-space-lg">
+<section class="w-full bg-surface-container-low py-space-xl my-space-lg m-tight">
     <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-md md:mb-space-xl gap-space-sm md:gap-space-md">
             <div class="max-w-xl">
                 <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold block mb-2">{{ $pillars->eyebrow }}</span>
                 <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-tight">{{ $pillars->title }}</h2>
             </div>
             <p class="font-body-md text-body-md text-on-surface-variant max-w-md">{{ $pillars->subtitle }}</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+        <div class="m-rail grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
             @foreach($pillars->activeItems() as $i => $p)
             <div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] hover:shadow-[0_12px_32px_-4px_rgba(61,35,20,0.1)] transition-all duration-300 flex flex-col justify-between group">
                 <div>
@@ -184,14 +184,14 @@
 @endif
 
 @if($ritual->is_active)
-<section class="w-full bg-surface-container-high/40 py-space-xl my-space-lg">
+<section class="w-full bg-surface-container-high/40 py-space-xl my-space-lg m-tight">
     <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin">
-        <div class="text-center max-w-2xl mx-auto mb-space-xl">
+        <div class="text-center max-w-2xl mx-auto mb-space-md md:mb-space-xl">
             <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold block mb-2">{{ $ritual->eyebrow }}</span>
             <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">{{ $ritual->title }}</h2>
             <p class="font-body-md text-body-md text-on-surface-variant mt-2">{{ $ritual->subtitle }}</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+        <div class="m-rail grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
             @foreach($ritual->activeItems() as $step)
             <div class="flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <div class="relative aspect-[4/3] overflow-hidden group">
@@ -216,7 +216,7 @@
 
 @if($reviews->is_active && $testimonials->count())
 <section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-space-xl">
-    <div class="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-xl">
+    <div class="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-md md:mb-space-xl">
         @if($reviews->eyebrow)
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold mb-2">
             <span class="material-symbols-outlined text-[16px]">{{ $reviews->eyebrow_icon ?: 'sentiment_satisfied' }}</span>
@@ -226,7 +226,7 @@
         <h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">{{ $reviews->title }}</h2>
         <p class="font-body-md text-body-md text-on-surface-variant mt-2">{{ $reviews->subtitle }}</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+    <div class="m-rail grid grid-cols-1 md:grid-cols-3 gap-gutter">
         @foreach($testimonials as $t)
         <div class="p-space-lg rounded-2xl bg-surface-container-low shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05)] flex flex-col justify-between relative group hover:bg-surface-container transition-colors">
             <div>

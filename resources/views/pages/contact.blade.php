@@ -56,8 +56,8 @@
     @endif
 
     @if($cards->is_active)
-    <section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin mb-16 md:mb-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin mb-8 md:mb-20">
+        <div class="m-rail grid grid-cols-1 md:grid-cols-3 gap-6">
             @foreach($cards->activeItems() as $i => $card)
             <div class="group relative rounded-2xl bg-surface-container-low p-6 md:p-8 flex flex-col justify-between shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05),0_2px_6px_-1px_rgba(200,125,56,0.04)] hover:shadow-[0_12px_32px_-4px_rgba(61,35,20,0.10)] transition-all duration-300 hover:-translate-y-1">
                 <div class="flex flex-col gap-4">
@@ -113,7 +113,7 @@
     <section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin mb-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             @if($form->is_active)
-            <div class="lg:col-span-7 bg-surface-container-low rounded-3xl p-6 sm:p-10 shadow-[0_8px_30px_rgba(61,35,20,0.06)] relative overflow-hidden" id="contact-form">
+            <div class="lg:col-span-7 bg-surface-container-low rounded-3xl p-5 sm:p-10 shadow-[0_8px_30px_rgba(61,35,20,0.06)] relative overflow-hidden" id="contact-form">
                 <div class="flex items-center justify-between pb-6 mb-6">
                     <div>
                         <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">{{ $form->eyebrow }}</span>
@@ -271,7 +271,7 @@
     @if($gallery->is_active && $gallery->activeItems()->count())
     <section class="w-full bg-surface-container-low py-12 mb-8">
         <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div class="m-rail m-rail-sm grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 @foreach($gallery->activeItems() as $img)
                 <div class="rounded-2xl overflow-hidden h-44 sm:h-56 shadow-sm group">
                     <div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" role="img" aria-label="{{ $img->title }}" style="background-image: url('{{ media($img->image) }}')"></div>

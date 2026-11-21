@@ -11,8 +11,8 @@
                 <a href="{{ route('home') }}"><img alt="{{ setting('site_name', 'Crinkle Nest') }} Logo" class="h-8 w-auto object-contain" src="{{ media(setting('logo')) }}"/></a>
             @endif
             <a class="flex flex-col" href="{{ route('home') }}">
-                <span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">{{ setting('site_name', 'Crinkle Nest') }}</span>
-                @if(setting('site_tagline'))<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5">{{ setting('site_tagline') }}</span>@endif
+                <span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight whitespace-nowrap">{{ setting('site_name', 'Crinkle Nest') }}</span>
+                @if(setting('site_tagline'))<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5 whitespace-nowrap">{{ setting('site_tagline') }}</span>@endif
             </a>
         </div>
         <nav class="hidden lg:flex items-center gap-space-xs bg-surface-container-low/70 p-1.5 rounded-full shadow-[0_2px_8px_rgba(61,35,20,0.03)]">
@@ -24,13 +24,13 @@
             @if(setting('header_cta_text'))
                 <a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-xs bg-secondary text-on-secondary rounded-full font-label-lg text-label-lg shadow-[0_4px_16px_rgba(142,78,8,0.25)] hover:bg-primary hover:text-on-primary transition-all duration-300 transform hover:-translate-y-0.5" href="{{ wa_link() }}" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[18px]">chat</span><span>{{ setting('header_cta_text') }}</span></a>
             @endif
-            <a aria-label="Basket" class="relative w-9 h-9 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-secondary hover:text-on-secondary transition-all" href="{{ route('cart.index') }}">
+            <a aria-label="Basket" class="hidden lg:flex relative w-9 h-9 rounded-full bg-surface-container-high text-primary flex items-center justify-center hover:bg-secondary hover:text-on-secondary transition-all" href="{{ route('cart.index') }}">
                 <span class="material-symbols-outlined text-[20px]">shopping_basket</span>
                 @if($cartCount)
                     <span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-secondary text-on-secondary text-[10px] font-bold flex items-center justify-center">{{ $cartCount }}</span>
                 @endif
             </a>
-            <a aria-label="User Profile &amp; Preferences" class="group relative flex items-center justify-center p-0.5 rounded-full hover:ring-2 hover:ring-secondary/40 transition-all" href="{{ auth()->check() ? route('profile.index') : route('login') }}">
+            <a aria-label="User Profile &amp; Preferences" class="hidden lg:flex group relative items-center justify-center p-0.5 rounded-full hover:ring-2 hover:ring-secondary/40 transition-all" href="{{ auth()->check() ? route('profile.index') : route('login') }}">
                 @if(auth()->check() && auth()->user()->avatar)
                     <img class="w-9 h-9 rounded-full object-cover" src="{{ media(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}">
                 @else

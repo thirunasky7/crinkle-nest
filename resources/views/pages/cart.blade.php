@@ -318,10 +318,10 @@
             <a class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="{{ link_to_url($reco->button_link ?: '/menu') }}"><span>{{ $reco->button_text }}</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
             @endif
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-space-md">
+        <div class="m-rail m-rail-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-space-md">
             @foreach($recommended as $r)
             <div class="bg-surface-container-lowest rounded-2xl p-space-sm transition-all duration-300 hover:shadow-[0_12px_28px_-4px_rgba(61,35,20,0.1)] group">
-                <div class="relative w-full h-44 rounded-xl overflow-hidden bg-surface-container mb-space-sm">
+                <div class="relative w-full h-32 sm:h-44 rounded-xl overflow-hidden bg-surface-container mb-space-sm">
                     <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="{{ $r->name }}" src="{{ media($r->image) }}" loading="lazy">
                     @if($r->badge)<span class="absolute top-2 left-2 {{ $r->badgeClasses() }} font-label-sm text-[10px] px-2 py-0.5 rounded-full font-bold">{{ $r->badge }}</span>@endif
                 </div>

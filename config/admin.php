@@ -296,7 +296,8 @@ return [
             'fields' => [
                 ['name' => 'location', 'label' => 'Location', 'type' => 'select', 'options' => Menu::LOCATIONS, 'required' => true],
                 ['name' => 'label', 'label' => 'Label', 'type' => 'text', 'required' => true],
-                ['name' => 'url', 'label' => 'Link', 'type' => 'text', 'required' => true, 'help' => 'Path (/about), anchor (/#trending-section), full URL, or {whatsapp}'],
+                ['name' => 'icon', 'label' => 'Icon (mobile tab bar)', 'type' => 'icon'],
+                ['name' => 'url', 'label' => 'Link', 'type' => 'text', 'required' => true, 'help' => 'Path (/about), anchor (/#trending-section), full URL, or {whatsapp}. A /cart link in the tab bar shows the basket count.'],
                 ['name' => 'match', 'label' => 'Highlight when URL matches', 'type' => 'text', 'help' => 'Optional, e.g. menu (header active state)'],
                 ['name' => 'new_tab', 'label' => 'Open in new tab', 'type' => 'checkbox'],
                 ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],

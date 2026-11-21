@@ -3,10 +3,10 @@
     $col2 = \App\Models\Menu::at('footer_quick');
     $bottom = \App\Models\Menu::at('footer_bottom');
 @endphp
-<footer class="w-full bg-surface-container-low mt-space-xl pt-space-xl pb-space-lg shadow-[0_-2px_16px_rgba(61,35,20,0.03)]">
+<footer class="w-full bg-surface-container-low mt-space-lg md:mt-space-xl pt-space-lg md:pt-space-xl pb-space-lg shadow-[0_-2px_16px_rgba(61,35,20,0.03)]">
     <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-lg mb-space-xl">
-            <div class="lg:col-span-4 flex flex-col gap-space-sm">
+        <div class="grid grid-cols-2 lg:grid-cols-12 gap-space-md md:gap-space-lg mb-space-lg md:mb-space-xl">
+            <div class="col-span-2 lg:col-span-4 flex flex-col gap-space-sm">
                 <div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-primary">{{ setting('site_name', 'Crinkle Nest') }}</span></div>
                 <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">{{ setting('footer_about') }}</p>
                 <div class="flex items-center gap-space-sm pt-space-xs">
@@ -43,7 +43,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="lg:col-span-3 flex flex-col gap-space-xs">
+            <div class="col-span-2 lg:col-span-3 flex flex-col gap-space-xs">
                 <h4 class="font-title-md text-title-md text-primary mb-space-xs">{{ setting('footer_col3_title', 'The Bakehouse') }}</h4>
                 <p class="font-body-md text-body-md text-on-surface-variant">{{ setting('address_short') }}<br/>{{ setting('opening_hours') }}</p>
                 <p class="font-body-md text-body-md text-on-surface-variant pt-2">@if(setting('phone'))Direct line: <a href="{{ tel_link(setting('phone')) }}" class="hover:text-primary">{{ setting('phone') }}</a>@endif<br/>@if(setting('email'))<a href="mailto:{{ setting('email') }}" class="hover:text-primary">{{ setting('email') }}</a>@endif</p>

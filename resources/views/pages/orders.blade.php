@@ -96,7 +96,7 @@
             @endif
             <div class="pt-space-sm pb-space-md">
                 <h2 class="font-label-lg text-label-lg text-primary uppercase tracking-wider mb-space-sm">Items In This Batch</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+                <div class="m-rail grid grid-cols-1 md:grid-cols-3 gap-space-md">
                     @foreach($o->items as $it)
                     <div class="flex items-center gap-space-sm bg-surface-container-low/70 p-space-sm rounded-DEFAULT hover:bg-surface-container transition-colors">
                         <img class="w-16 h-16 rounded-xl object-cover shadow-sm flex-shrink-0" alt="{{ $it->name }}" src="{{ media($it->image) }}">
@@ -230,7 +230,7 @@
         @endif
 
         @if($assure->is_active && $assure->activeItems()->count())
-        <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-3 gap-space-md pt-space-md">
+        <div class="m-rail mt-space-xl grid grid-cols-1 sm:grid-cols-3 gap-space-md pt-space-md">
             @foreach($assure->activeItems() as $a)
             <div class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
                 <div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0"><span class="material-symbols-outlined text-[20px]">{{ $a->icon }}</span></div>

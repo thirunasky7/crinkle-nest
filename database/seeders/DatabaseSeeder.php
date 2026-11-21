@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SettingSeeder::class,
             MenuSeeder::class,
+            MobileTabbarSeeder::class,
             SectionSeeder::class,
             CatalogSeeder::class,
             ContentSeeder::class,
