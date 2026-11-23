@@ -1,0 +1,35 @@
+# Root .htaccess for shared hosting (e.g. Hostinger) where the domain points at
+# the project folder instead of /public. Serves the site from /public and
+# blocks every private Laravel file and folder.
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Preserve Authorization header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Never expose private files / folders (403 Forbidden)
+    RewriteRule ^(\.env.*|\.git.*|\.claude|\.editorconfig|\.phpunit.*|artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|vite\.config\.js|README\.md)(/|$) - [F,L,NC]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|tests|vendor|node_modules|stitch_crinkle_nest_bakery_website)(/|$) - [F,L,NC]
+    RewriteRule ^storage/(logs|framework|app)(/|$) - [F,L,NC]
+
+    # Old links like /index.php/menu -> /menu
+    RewriteCond %{THE_REQUEST} \s/+(public/)?index\.php[/?\s] [NC]
+    RewriteRule ^(public/)?index\.php/?(.*)$ /$2 [R=301,L,NE]
+
+    # Old links that include /public/ -> clean URL
+    RewriteCond %{THE_REQUEST} \s/+public/ [NC]
+    RewriteRule ^public/(.*)$ /$1 [R=301,L,NE]
+
+    # Serve everything from /public (its own .htaccess sends routes to Laravel)
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Fallback if mod_rewrite is unavailable: at least block the obvious secrets
+<FilesMatch "^(\.env.*|composer\.(json|lock)|artisan|phpunit\.xml|package(-lock)?\.json|.*\.log)$">
+    Require all denied
+</FilesMatch>
