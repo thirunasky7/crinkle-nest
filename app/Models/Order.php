@@ -56,6 +56,18 @@ class Order extends Model
         return $i === false ? 0 : $i;
     }
 
+    /** Customers may cancel only until the bakers start preparing (status moves past "confirmed"). */
+    public function canBeCancelled(): bool
+    {
+        return $this->status === 'confirmed' && setting('allow_customer_cancel', '1') === '1';
+    }
+
+    /** True once preparation has started and the order can no longer be cancelled by the customer. */
+    public function cancellationLocked(): bool
+    {
+        return in_array($this->status, ['baking', 'packing', 'dispatched'], true);
+    }
+
     public function statusLabel(): string
     {
         return self::STATUSES[$this->status] ?? ucfirst($this->status);

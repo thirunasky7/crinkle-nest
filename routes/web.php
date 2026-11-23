@@ -8,7 +8,15 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
+
+/* ------------------------- SEO & marketing ---------------------------- */
+
+Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
+Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
+Route::get('/manifest.webmanifest', [SeoController::class, 'manifest'])->name('manifest');
+Route::post('/subscribe', [SeoController::class, 'subscribe'])->middleware('throttle:6,1')->name('subscribe');
 
 /* ----------------------------- Storefront ----------------------------- */
 
@@ -32,6 +40,7 @@ Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/orders/{number}/invoice', [OrderController::class, 'invoice'])->name('orders.invoice');
 Route::post('/orders/{number}/reorder', [OrderController::class, 'reorder'])->name('orders.reorder');
 Route::post('/orders/{number}/rate', [OrderController::class, 'rate'])->name('orders.rate');
+Route::post('/orders/{number}/cancel', [OrderController::class, 'cancel'])->middleware('throttle:10,1')->name('orders.cancel');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -76,6 +85,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/messages/{message}', [OrderAdminController::class, 'message'])->name('messages.show');
         Route::delete('/messages/{message}', [OrderAdminController::class, 'destroyMessage'])->name('messages.destroy');
 
+        Route::get('/{resource}/export', [ResourceController::class, 'export'])->name('resource.export');
         Route::get('/{resource}', [ResourceController::class, 'index'])->name('resource.index');
         Route::get('/{resource}/create', [ResourceController::class, 'create'])->name('resource.create');
         Route::post('/{resource}', [ResourceController::class, 'store'])->name('resource.store');

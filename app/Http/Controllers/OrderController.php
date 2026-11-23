@@ -19,7 +19,8 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        $filter = in_array($request->query('filter'), ['all', 'active', 'delivered', 'custom'], true) ? $request->query('filter') : 'all';
+        seo()->page('orders')->noindex();
+        $filter = in_array($request->query('filter'), ['all', 'active', 'delivered', 'cancelled', 'custom'], true) ? $request->query('filter') : 'all';
         $base = $this->baseQuery($request);
 
         $activeOrder = (clone $base)->whereIn('status', Order::ACTIVE_STATUSES)->latest()->with('items')->first();
@@ -28,12 +29,14 @@ class OrderController extends Controller
             'all' => (clone $base)->count(),
             'active' => (clone $base)->whereIn('status', Order::ACTIVE_STATUSES)->count(),
             'delivered' => (clone $base)->where('status', 'delivered')->count(),
+            'cancelled' => (clone $base)->where('status', 'cancelled')->count(),
         ];
 
         $list = (clone $base)->with('items')->latest();
         match ($filter) {
             'active' => $list->whereIn('status', Order::ACTIVE_STATUSES),
             'delivered' => $list->where('status', 'delivered'),
+            'cancelled' => $list->where('status', 'cancelled'),
             'custom' => $list->whereNotNull('label'),
             default => $activeOrder ? $list->where('id', '!=', $activeOrder->id) : null,
         };
@@ -74,6 +77,28 @@ class OrderController extends Controller
         }
 
         return redirect()->route('cart.index')->with($added ? 'success' : 'error', $added ? 'Your previous batch is back in the basket.' : 'These bakes are no longer on the menu.');
+    }
+
+    public function cancel(Request $request, string $number)
+    {
+        $order = $this->findOwned($request, $number);
+        $data = $request->validate(['reason' => 'nullable|string|max:180']);
+
+        if (! $order->canBeCancelled()) {
+            return back()->with('error', $order->cancellationLocked()
+                ? 'Order #'.$order->order_number.' is already being prepared, so it can no longer be cancelled. Please contact us on WhatsApp.'
+                : 'This order cannot be cancelled.');
+        }
+
+        $order->update([
+            'status' => 'cancelled',
+            'status_note' => 'Cancelled by customer'.(! empty($data['reason']) ? ': '.$data['reason'] : ''),
+        ]);
+        if ($order->coupon_code && ($coupon = \App\Models\Coupon::where('code', $order->coupon_code)->first()) && $coupon->used_count > 0) {
+            $coupon->decrement('used_count');
+        }
+
+        return back()->with('success', 'Order #'.$order->order_number.' has been cancelled.');
     }
 
     public function rate(Request $request, string $number)

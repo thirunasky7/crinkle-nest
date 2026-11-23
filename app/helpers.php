@@ -86,6 +86,35 @@ if (! function_exists('money')) {
     }
 }
 
+if (! function_exists('seo')) {
+    /** Request-scoped SEO data for the current page. */
+    function seo(): \App\Support\Seo
+    {
+        return app(\App\Support\Seo::class);
+    }
+}
+
+if (! function_exists('track_event')) {
+    /**
+     * Queue a marketing event (GA4 / GTM dataLayer / Meta Pixel) to fire on the next page view.
+     * Names follow GA4: add_to_cart, begin_checkout, purchase, generate_lead, sign_up …
+     */
+    function track_event(string $name, array $params = []): void
+    {
+        $events = session('track_events', []);
+        $events[] = ['name' => $name, 'params' => $params];
+        session()->flash('track_events', $events);
+    }
+}
+
+if (! function_exists('attribution')) {
+    /** First-touch campaign attribution captured from UTM parameters / referrer. */
+    function attribution(): array
+    {
+        return array_intersect_key((array) session('attribution', []), array_flip(['utm_source', 'utm_medium', 'utm_campaign', 'referrer', 'landing_page']));
+    }
+}
+
 if (! function_exists('tel_link')) {
     function tel_link(?string $phone): string
     {

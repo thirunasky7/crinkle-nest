@@ -8,6 +8,8 @@ use App\Models\Menu;
 use App\Models\Page;
 use App\Models\Product;
 use App\Models\Section;
+use App\Models\SeoMeta;
+use App\Models\Subscriber;
 use App\Models\Testimonial;
 use App\Models\User;
 use App\Models\Video;
@@ -41,6 +43,7 @@ return [
         'Catalogue' => ['products', 'categories', 'videos'],
         'Content' => ['sections', 'pages', 'testimonials', 'faqs', 'menus'],
         'Shop' => ['coupons', 'delivery-slots', 'customers'],
+        'SEO & Marketing' => ['seo-pages', 'subscribers'],
     ],
 
     'resources' => [
@@ -114,6 +117,8 @@ return [
                 ['name' => 'badge', 'label' => 'Collection card badge', 'type' => 'text', 'help' => 'e.g. 12 varieties'],
                 ['name' => 'price_label', 'label' => 'Default price label', 'type' => 'text', 'help' => 'e.g. Price (200g)'],
                 ['name' => 'link', 'label' => 'Custom card link', 'type' => 'text', 'help' => 'Optional. Leave empty to open the category menu page. Use {whatsapp} for a WhatsApp chat.'],
+                ['name' => 'meta_title', 'label' => 'SEO title (category page)', 'type' => 'text', 'help' => 'Shown in Google. ~55 characters. Empty = "{Name} — Order Online".'],
+                ['name' => 'meta_description', 'label' => 'SEO description', 'type' => 'textarea', 'rows' => 2, 'help' => '~150 characters. Empty = section description.'],
                 ['name' => 'show_on_home', 'label' => 'Show as product carousel on Home page', 'type' => 'checkbox'],
                 ['name' => 'show_in_collections', 'label' => 'Show in “More Bakery Collections”', 'type' => 'checkbox', 'default' => true],
                 ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
@@ -356,6 +361,57 @@ return [
                 ['name' => 'is_custom', 'label' => 'Customer chooses a date', 'type' => 'checkbox'],
                 ['name' => 'sort', 'label' => 'Display order', 'type' => 'number', 'default' => 0],
                 ['name' => 'is_active', 'label' => 'Active', 'type' => 'checkbox', 'default' => true],
+            ],
+        ],
+
+        'seo-pages' => [
+            'model' => SeoMeta::class,
+            'title' => 'Page SEO',
+            'singular' => 'Page SEO',
+            'icon' => 'travel_explore',
+            'order' => ['id', 'asc'],
+            'search' => ['name', 'title', 'page_key'],
+            'can_create' => false,
+            'can_delete' => false,
+            'columns' => [
+                'name' => ['label' => 'Page'],
+                'title' => ['label' => 'Google title', 'limit' => 60],
+                'description' => ['label' => 'Description', 'limit' => 70],
+                'noindex' => ['label' => 'Hidden from Google', 'type' => 'bool'],
+            ],
+            'fields' => [
+                ['name' => 'name', 'label' => 'Page', 'type' => 'text', 'required' => true],
+                ['name' => 'title', 'label' => 'SEO title', 'type' => 'text', 'help' => 'The blue headline in Google results. Aim for 50-60 characters with your main keyword + city.'],
+                ['name' => 'description', 'label' => 'Meta description', 'type' => 'textarea', 'rows' => 3, 'help' => 'The grey text under the title in Google. Aim for 140-160 characters with a call to action.'],
+                ['name' => 'keywords', 'label' => 'Keywords', 'type' => 'text', 'help' => 'Optional, comma-separated.'],
+                ['name' => 'og_image', 'label' => 'Social share image (1200x630)', 'type' => 'image', 'help' => 'Shown when this page is shared on WhatsApp / Facebook / Instagram. Empty = default from Settings.'],
+                ['name' => 'canonical', 'label' => 'Canonical URL override', 'type' => 'url', 'help' => 'Leave empty unless you know you need it.'],
+                ['name' => 'noindex', 'label' => 'Hide this page from search engines (noindex)', 'type' => 'checkbox'],
+            ],
+        ],
+
+        'subscribers' => [
+            'model' => Subscriber::class,
+            'title' => 'Newsletter Subscribers',
+            'singular' => 'Subscriber',
+            'icon' => 'mark_email_unread',
+            'order' => ['id', 'desc'],
+            'search' => ['email', 'name', 'utm_source'],
+            'export' => true,
+            'columns' => [
+                'email' => ['label' => 'Email'],
+                'name' => ['label' => 'Name'],
+                'source' => ['label' => 'Signed up from'],
+                'utm_source' => ['label' => 'Traffic source'],
+                'is_active' => ['label' => 'Subscribed', 'type' => 'bool'],
+                'created_at' => ['label' => 'Date', 'type' => 'date'],
+            ],
+            'fields' => [
+                ['name' => 'email', 'label' => 'Email', 'type' => 'email', 'required' => true, 'unique' => true],
+                ['name' => 'name', 'label' => 'Name', 'type' => 'text'],
+                ['name' => 'phone', 'label' => 'Phone', 'type' => 'text'],
+                ['name' => 'source', 'label' => 'Source', 'type' => 'text'],
+                ['name' => 'is_active', 'label' => 'Subscribed', 'type' => 'checkbox', 'default' => true],
             ],
         ],
 

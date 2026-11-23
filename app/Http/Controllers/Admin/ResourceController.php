@@ -57,6 +57,33 @@ class ResourceController extends Controller
         return view('admin.resource.index', compact('cfg', 'records', 'resource'));
     }
 
+    /** CSV download of the (filtered) list, e.g. newsletter subscribers for Mailchimp / Brevo. */
+    public function export(Request $request, string $resource)
+    {
+        $cfg = $this->config($resource);
+        abort_unless(! empty($cfg['export']), 404);
+        $query = $cfg['model']::query();
+        if (($q = trim((string) $request->query('q'))) !== '' && ! empty($cfg['search'])) {
+            $query->where(function ($w) use ($cfg, $q) {
+                foreach ($cfg['search'] as $col) {
+                    $w->orWhere($col, 'like', "%{$q}%");
+                }
+            });
+        }
+        $cols = array_keys(array_filter($cfg['columns'], fn ($c) => ($c['type'] ?? '') !== 'image'));
+
+        return response()->streamDownload(function () use ($query, $cols) {
+            $out = fopen('php://output', 'w');
+            fputcsv($out, $cols);
+            $query->orderBy('id')->chunk(500, function ($rows) use ($out, $cols) {
+                foreach ($rows as $r) {
+                    fputcsv($out, array_map(fn ($c) => (string) data_get($r, $c), $cols));
+                }
+            });
+            fclose($out);
+        }, $resource.'-'.now()->format('Y-m-d').'.csv', ['Content-Type' => 'text/csv']);
+    }
+
     public function create(string $resource)
     {
         $cfg = $this->config($resource);

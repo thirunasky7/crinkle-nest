@@ -5,6 +5,19 @@
     $idleCls = 'px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all';
 @endphp
 <header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05),0_2px_6px_-1px_rgba(200,125,56,0.04)]">
+    @if($promoBar ?? false)
+        @php
+            $promoHref = setting('promo_bar_link') ? link_to_url(setting('promo_bar_link')) : null;
+            $promoCls = 'h-9 bg-primary text-on-primary flex items-center justify-center px-4 font-label-md text-label-md text-center hover:bg-primary-container transition-colors';
+        @endphp
+        @if($promoHref)
+            <a href="{{ $promoHref }}" class="{{ $promoCls }}" @if(str_starts_with($promoHref, 'http')) target="_blank" rel="noopener noreferrer" @endif onclick="window.cnTrack && cnTrack('select_promotion', {promotion_name: @js(setting('promo_bar_text'))})">
+                <span class="material-symbols-outlined text-[16px] text-secondary-container mr-1.5 hidden sm:inline">campaign</span><span class="truncate">{{ setting('promo_bar_text') }}</span>
+            </a>
+        @else
+            <div class="{{ $promoCls }}"><span class="material-symbols-outlined text-[16px] text-secondary-container mr-1.5 hidden sm:inline">campaign</span><span class="truncate">{{ setting('promo_bar_text') }}</span></div>
+        @endif
+    @endif
     <div class="h-20 max-w-[1280px] mx-auto px-margin-mobile md:px-margin flex items-center justify-between gap-space-md">
         <div class="flex items-center gap-space-sm">
             @if(setting('logo'))

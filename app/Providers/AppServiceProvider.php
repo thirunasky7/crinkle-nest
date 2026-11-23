@@ -11,7 +11,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // One SEO object per request (also reset between requests in tests / Octane).
+        $this->app->scoped(\App\Support\Seo::class);
     }
 
     /**

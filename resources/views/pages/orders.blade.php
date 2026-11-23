@@ -13,6 +13,7 @@
         'all' => 'All Orders ('.$counts['all'].')',
         'active' => 'In Oven ('.$counts['active'].')',
         'delivered' => 'Delivered ('.$counts['delivered'].')',
+        'cancelled' => 'Cancelled ('.$counts['cancelled'].')',
         'custom' => 'Custom Bakes',
     ];
 @endphp
@@ -129,6 +130,7 @@
                     @endif
                     <a class="w-full sm:w-auto justify-center px-space-md py-space-xs bg-secondary text-on-secondary rounded-full font-label-lg text-label-lg shadow-sm hover:bg-secondary/90 transition-all flex items-center gap-2 transform hover:-translate-y-0.5" href="{{ wa_link('Hi '.setting('site_name', 'Crinkle Nest').'! Checking in on Order #'.$o->order_number) }}" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[18px]">chat</span><span>Chat with Baker</span></a>
                     <a href="{{ route('orders.invoice', $o->order_number) }}" target="_blank" class="w-full sm:w-auto justify-center px-space-md py-space-xs bg-surface-container text-on-surface-variant rounded-full font-label-lg text-label-lg hover:bg-surface-container-high transition-all flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">download</span><span>Bake Slip</span></a>
+                    @include('partials.order-cancel', ['order' => $o])
                 </div>
             </div>
         </div>
@@ -173,10 +175,11 @@
                     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-sm">
                         <div class="flex flex-wrap items-center gap-space-sm">
                             <span class="font-title-md text-title-md text-primary font-bold">Order #{{ $o->order_number }}</span>
-                            <span class="px-2.5 py-0.5 rounded-full {{ $o->label ? 'bg-tertiary-fixed text-on-tertiary-fixed' : 'bg-surface-container-high text-on-surface-variant' }} font-label-sm text-label-sm font-semibold">
+                            <span class="px-2.5 py-0.5 rounded-full {{ $o->status === 'cancelled' ? 'bg-error-container text-on-error-container' : ($o->label ? 'bg-tertiary-fixed text-on-tertiary-fixed' : 'bg-surface-container-high text-on-surface-variant') }} font-label-sm text-label-sm font-semibold">
                                 {{ $o->status === 'delivered' ? 'Delivered '.optional($o->delivered_at ?? $o->updated_at)->format('d M') : $o->statusLabel().' • '.$o->created_at->format('d M') }}{{ $o->label ? ' • '.$o->label : '' }}
                             </span>
                             @if($o->status === 'delivered')<span class="flex items-center gap-1 font-body-sm text-body-sm text-secondary"><span class="material-symbols-outlined text-[16px]">verified</span>{{ $head->x('delivered_note', 'Hand-delivered with care') }}</span>@endif
+                            @if($o->status === 'cancelled' && $o->status_note)<span class="font-body-sm text-body-sm text-on-surface-variant">{{ $o->status_note }}</span>@endif
                         </div>
                         <div class="flex items-center justify-between sm:justify-end gap-space-sm w-full sm:w-auto">
                             <span class="font-title-md text-title-md text-primary font-bold">{{ money($o->total) }} Total</span>
@@ -208,6 +211,7 @@
                                 @csrf
                                 <button class="w-full sm:w-auto justify-center px-space-md py-space-xs bg-secondary text-on-secondary rounded-full font-label-lg text-label-lg shadow-sm hover:bg-primary transition-all flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">restart_alt</span><span>Reorder with 1-Click</span></button>
                             </form>
+                            @include('partials.order-cancel', ['order' => $o, 'compact' => true])
                             @if($o->status === 'delivered' && ! $o->rating)
                             <button type="button" onclick="document.getElementById('rate-{{ $o->id }}').classList.toggle('hidden')" class="w-full sm:w-auto justify-center px-space-sm py-space-xs bg-surface-container text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Rate Bakes</button>
                             @endif

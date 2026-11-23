@@ -361,3 +361,9 @@
     toggleCustomDate();
 </script>
 @endpush
+
+@if($summary['lines']->isNotEmpty())
+@push('scripts')
+<script>(window.cnQueue = window.cnQueue || []).push(['begin_checkout', {!! json_encode(['currency' => setting('currency_code', 'INR'), 'value' => (float) $summary['total'], 'coupon' => $summary['coupon_code'], 'items' => $summary['lines']->map(fn ($l) => \App\Http\Controllers\CartController::gaItem($l->product, $l->qty))->values()], JSON_HEX_TAG | JSON_UNESCAPED_UNICODE) !!}]);</script>
+@endpush
+@endif

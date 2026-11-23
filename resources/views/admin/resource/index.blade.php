@@ -16,9 +16,14 @@
         @endif
         <button class="adm-btn adm-btn-soft"><span class="material-symbols-outlined">search</span>Filter</button>
     </form>
+    <div class="flex items-center gap-2">
+    @if(! empty($cfg['export']))
+        <a href="{{ route('admin.resource.export', [$resource] + request()->only('q', 'filter')) }}" class="adm-btn adm-btn-soft"><span class="material-symbols-outlined">download</span>Export CSV</a>
+    @endif
     @if($cfg['can_create'])
         <a href="{{ route('admin.resource.create', $resource) }}" class="adm-btn adm-btn-primary"><span class="material-symbols-outlined">add</span>New {{ strtolower($cfg['singular']) }}</a>
     @endif
+    </div>
 </div>
 
 <div class="adm-card !p-0 overflow-hidden">

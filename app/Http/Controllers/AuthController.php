@@ -11,6 +11,7 @@ class AuthController extends Controller
 {
     public function showLogin()
     {
+        seo()->page('login')->noindex();
         return view('auth.login');
     }
 
@@ -29,6 +30,7 @@ class AuthController extends Controller
 
     public function showRegister()
     {
+        seo()->page('register')->noindex();
         return view('auth.register');
     }
 
@@ -44,6 +46,7 @@ class AuthController extends Controller
         unset($data['password_confirmation']);
         $data['points'] = (int) setting('signup_bonus_points', 0);
         $user = User::create($data);
+        track_event('sign_up', ['method' => 'website']);
         $guestOrders = session('guest_orders', []);
         Auth::login($user);
         $request->session()->regenerate();

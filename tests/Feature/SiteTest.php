@@ -132,7 +132,9 @@ class SiteTest extends TestCase
         foreach (array_keys(config('admin.resources')) as $res) {
             $this->get("/admin/$res")->assertOk();
             $model = config("admin.resources.$res.model");
-            $this->get("/admin/$res/".$model::first()->getKey().'/edit')->assertOk();
+            if ($first = $model::first()) {
+                $this->get("/admin/$res/".$first->getKey().'/edit')->assertOk();
+            }
             if (config("admin.resources.$res.can_create", true)) {
                 $this->get("/admin/$res/create")->assertOk();
             }
@@ -185,6 +187,134 @@ class SiteTest extends TestCase
         $before = $order->user->points;
         $this->put('/admin/orders/'.$order->id, ['status' => 'delivered', 'payment_status' => 'paid'])->assertRedirect();
         $this->assertEquals($before + (int) floor($order->total / 100 * 10), $order->user->fresh()->points);
+    }
+
+    public function test_customer_can_cancel_only_before_preparation_starts(): void
+    {
+        $customer = User::where('email', 'ananya@example.com')->firstOrFail();
+        $this->actingAs($customer);
+
+        // Seeded active order is already "baking" → locked.
+        $baking = $customer->orders()->where('status', 'baking')->firstOrFail();
+        $this->get('/orders')->assertSee('Cancel unavailable')->assertDontSee('Yes, cancel this order');
+        $this->post(route('orders.cancel', $baking->order_number))->assertSessionHas('error');
+        $this->assertSame('baking', $baking->fresh()->status);
+
+        // A freshly confirmed order can be cancelled.
+        $baking->update(['status' => 'confirmed']);
+        $this->get('/orders')->assertSee('Yes, cancel this order');
+        $this->get('/profile')->assertSee('Order History')->assertSee('Yes, cancel this order');
+        $this->post(route('orders.cancel', $baking->order_number), ['reason' => 'Changed plans'])->assertSessionHas('success');
+        $this->assertSame('cancelled', $baking->fresh()->status);
+        $this->assertStringContainsString('Changed plans', $baking->fresh()->status_note);
+        $this->get('/orders?filter=cancelled')->assertSee($baking->order_number);
+
+        // Delivered orders show no cancel control; other customers can't cancel.
+        $delivered = $customer->orders()->where('status', 'delivered')->first();
+        $this->post(route('orders.cancel', $delivered->order_number))->assertSessionHas('error');
+        $this->actingAs(User::where('email', 'admin@crinklenest.com')->first());
+        $other = User::create(['name' => 'Other', 'email' => 'o@example.com', 'password' => 'secret123']);
+        $this->actingAs($other)->post(route('orders.cancel', $delivered->order_number))->assertForbidden();
+    }
+
+    public function test_admin_can_switch_off_customer_cancellation(): void
+    {
+        $customer = User::where('email', 'ananya@example.com')->firstOrFail();
+        $order = $customer->orders()->where('status', 'baking')->firstOrFail();
+        $order->update(['status' => 'confirmed']);
+        Setting::where('key', 'allow_customer_cancel')->update(['value' => '0']);
+        Setting::flush();
+
+        $this->actingAs($customer)->post(route('orders.cancel', $order->order_number))->assertSessionHas('error');
+        $this->assertSame('confirmed', $order->fresh()->status);
+    }
+
+    public function test_robots_and_sitemap_are_served_dynamically(): void
+    {
+        $this->get('/robots.txt')->assertOk()->assertHeader('Content-Type', 'text/plain; charset=UTF-8')
+            ->assertSee('Disallow: /admin')->assertSee('Sitemap: https://crinklenest.com/sitemap.xml');
+
+        $xml = $this->get('/sitemap.xml')->assertOk()->getContent();
+        $this->assertStringContainsString('<loc>https://crinklenest.com/</loc>', $xml);
+        $this->assertStringContainsString('<loc>https://crinklenest.com/menu/brownie</loc>', $xml);
+        $this->assertStringContainsString('<loc>https://crinklenest.com/page/terms-and-conditions</loc>', $xml);
+        $this->assertStringContainsString('<image:loc>', $xml);
+        $this->assertStringNotContainsString('/cart', $xml);
+        libxml_use_internal_errors(true);
+        $this->assertNotFalse(simplexml_load_string($xml), 'sitemap must be valid XML');
+
+        Setting::where('key', 'seo_noindex_site')->update(['value' => '1']);
+        Setting::flush();
+        $this->get('/robots.txt')->assertSee("Disallow: /\n", false);
+        $this->get('/')->assertSee('noindex, nofollow', false);
+    }
+
+    public function test_pages_have_full_seo_head_and_structured_data(): void
+    {
+        $html = $this->get('/')->getContent();
+        $this->assertStringContainsString('<link rel="canonical" href="https://crinklenest.com/">', $html);
+        $this->assertStringContainsString('property="og:image"', $html);
+        $this->assertStringContainsString('name="twitter:card" content="summary_large_image"', $html);
+        $this->assertStringContainsString('index, follow', $html);
+        preg_match('~<script type="application/ld\+json">(.*?)</script>~s', $html, $m);
+        $graph = json_decode($m[1], true);
+        $types = array_column($graph['@graph'], '@type');
+        $this->assertContains('Bakery', $types);
+        $this->assertContains('WebSite', $types);
+        $this->assertContains('ItemList', $types);
+        $bakery = collect($graph['@graph'])->firstWhere('@type', 'Bakery');
+        $this->assertSame('Bangalore', $bakery['address']['addressLocality']);
+        $this->assertNotEmpty($bakery['openingHoursSpecification']);
+
+        $menu = $this->get('/menu/brownie')->getContent();
+        $this->assertStringContainsString('<title>Brownie — Order Online | Crinkle Nest</title>', $menu);
+        $this->assertStringContainsString('BreadcrumbList', $menu);
+        $this->assertStringContainsString('FAQPage', $this->get('/contact')->getContent());
+
+        // Private pages are kept out of Google.
+        foreach (['/cart', '/orders', '/login', '/register'] as $url) {
+            $this->get($url)->assertSee('<meta name="robots" content="noindex, nofollow">', false);
+        }
+    }
+
+    public function test_tracking_scripts_events_and_attribution(): void
+    {
+        foreach (['ga4_id' => 'G-TEST123', 'meta_pixel_id' => '999888777', 'gtm_id' => 'GTM-ABC123'] as $k => $v) {
+            Setting::where('key', $k)->update(['value' => $v]);
+        }
+        Setting::flush();
+
+        $this->get('/?utm_source=instagram&utm_medium=social&utm_campaign=diwali')
+            ->assertSee('gtag/js?id=G-TEST123', false)->assertSee("fbq('init', \"999888777\")", false)->assertSee('GTM-ABC123', false)
+            ->assertSee('cnConsent', false);
+
+        $product = Product::where('is_active', true)->first();
+        $this->post(route('cart.add', $product));
+        $this->get('/cart')->assertSee("cnTrack(\"add_to_cart\"", false)->assertSee('begin_checkout', false);
+
+        $slot = DeliverySlot::first();
+        $this->post('/checkout', ['name' => 'Ad Buyer', 'phone' => '9', 'address' => 'x', 'city' => 'y', 'slot_id' => $slot->id, 'payment_method' => 'online']);
+        $order = Order::where('name', 'Ad Buyer')->firstOrFail();
+        $this->assertSame('instagram', $order->utm_source);
+        $this->assertSame('diwali', $order->utm_campaign);
+        $this->get('/orders')->assertSee('cnTrack("purchase"', false)->assertSee($order->order_number);
+    }
+
+    public function test_newsletter_signup_and_admin_export(): void
+    {
+        $this->get('/?utm_source=facebook');
+        $this->post('/subscribe', ['email' => 'Fan@Example.com', 'source' => 'footer'])->assertSessionHas('subscribed');
+        $this->post('/subscribe', ['email' => 'fan@example.com']); // duplicate is merged
+        $this->assertDatabaseCount('subscribers', 1);
+        $this->assertDatabaseHas('subscribers', ['email' => 'fan@example.com', 'utm_source' => 'facebook']);
+
+        $this->post('/subscribe', ['email' => 'bot@example.com', 'website' => 'spam'])->assertSessionHasErrors('website');
+
+        $this->actingAs($this->admin());
+        $csv = $this->get('/admin/subscribers/export')->assertOk()->streamedContent();
+        $this->assertStringContainsString('fan@example.com', $csv);
+        $this->get('/admin')->assertSee('Orders by marketing source');
+        $this->get('/admin/seo-pages')->assertOk()->assertSee('Home page');
     }
 
     public function test_admin_can_manage_policy_page_clauses(): void

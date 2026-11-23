@@ -20,6 +20,15 @@
         "export DB_CONNECTION=mysql DB_HOST=127.0.0.1 DB_PORT=3306 DB_DATABASE=crinkle_nest DB_USERNAME=root DB_PASSWORD= APP_URL=http://127.0.0.1:8002; cd public && php -S 127.0.0.1:8002 ../vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php"
       ],
       "port": 8002
+    },
+    {
+      "name": "crinkle-nest-sqlite",
+      "runtimeExecutable": "C:/Program Files/Git/bin/bash.exe",
+      "runtimeArgs": [
+        "-c",
+        "export DB_CONNECTION=sqlite DB_DATABASE='C:/Users/admin/AppData/Local/Temp/claude/0ef8cbac6677a2fc/583dc1eb-826c-42ce-ad5e-692c3c79a70b/scratchpad/preview.sqlite' CACHE_DRIVER=array APP_URL=http://127.0.0.1:8003; cd public && php -S 127.0.0.1:8003 ../vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php"
+      ],
+      "port": 8003
     }
   ]
 }

@@ -34,6 +34,7 @@
             <div><div class="adm-label">Delivery</div>{{ $order->address }}<br>{{ $order->city }}@if($order->instructions)<br><em class="text-on-surface-variant">{{ $order->instructions }}</em>@endif</div>
             <div><div class="adm-label">Slot</div>{{ $order->slot_label ?: '—' }}@if($order->custom_date)<br>Date: {{ $order->custom_date->format('d M Y') }}@endif</div>
             <div><div class="adm-label">Gift note</div>{{ $order->gift_note ?: '—' }}</div>
+            <div><div class="adm-label">Marketing source</div>{{ $order->utm_source ?: 'direct' }} / {{ $order->utm_medium ?: 'none' }}@if($order->utm_campaign)<br>Campaign: {{ $order->utm_campaign }}@endif @if($order->landing_page)<br><span class="text-xs text-outline">Landed on {{ $order->landing_page }}</span>@endif</div>
             @if($order->rating)<div><div class="adm-label">Customer rating</div>{{ str_repeat('★', $order->rating) }} {{ $order->review }}</div>@endif
         </div>
     </div>

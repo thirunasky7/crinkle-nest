@@ -63,6 +63,11 @@ class AdminController extends Controller
                 'products' => Product::where('is_active', true)->count(),
                 'unread' => ContactMessage::where('is_read', false)->count(),
             ],
+            'sources' => Order::where('created_at', '>=', now()->subDays(30))->where('status', '!=', 'cancelled')
+                ->selectRaw("COALESCE(utm_source, 'direct') as source, COUNT(*) as orders, SUM(total) as revenue")
+                ->groupBy('source')->orderByDesc('revenue')->take(8)->get(),
+            'subscriberCount' => \App\Models\Subscriber::where('is_active', true)->count(),
+            'newSubscribers' => \App\Models\Subscriber::where('created_at', '>=', now()->subDays(30))->count(),
             'recentOrders' => Order::latest()->take(8)->get(),
             'recentMessages' => ContactMessage::latest()->take(5)->get(),
         ]);

@@ -58,6 +58,32 @@
     </div>
 </div>
 
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-6">
+    <div class="adm-card xl:col-span-2 !p-0 overflow-hidden">
+        <div class="flex items-center justify-between p-5">
+            <h2 class="font-headline-sm text-[18px] text-primary">Orders by marketing source <span class="text-sm text-outline font-body-md">· last 30 days</span></h2>
+            <a class="text-secondary text-sm font-semibold" href="{{ route('admin.settings', ['group' => 'marketing']) }}">Tracking setup →</a>
+        </div>
+        <table class="adm-table">
+            <thead><tr><th>Source</th><th>Orders</th><th>Revenue</th></tr></thead>
+            <tbody>
+            @forelse($sources as $s)
+                <tr><td class="font-semibold text-primary">{{ $s->source }}</td><td>{{ $s->orders }}</td><td>{{ money($s->revenue) }}</td></tr>
+            @empty
+                <tr><td colspan="3" class="text-center text-on-surface-variant py-6">No orders in the last 30 days.</td></tr>
+            @endforelse
+            </tbody>
+        </table>
+        <p class="adm-help px-5 pb-4">Tag your Instagram / WhatsApp / ad links with <code class="font-mono">?utm_source=instagram&utm_medium=social&utm_campaign=diwali</code> to see them here.</p>
+    </div>
+    <a href="{{ route('admin.resource.index', 'subscribers') }}" class="adm-card hover:-translate-y-0.5 transition-transform">
+        <div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center mb-3"><span class="material-symbols-outlined">mark_email_unread</span></div>
+        <div class="text-[28px] font-bold text-primary leading-none">{{ $subscriberCount }}</div>
+        <div class="text-sm text-on-surface-variant mt-1">Newsletter subscribers</div>
+        <div class="text-xs text-secondary font-semibold mt-2">+{{ $newSubscribers }} in the last 30 days</div>
+    </a>
+</div>
+
 <div class="adm-card mt-6">
     <h2 class="font-headline-sm text-[18px] text-primary mb-3">Quick edits</h2>
     <div class="flex flex-wrap gap-2">

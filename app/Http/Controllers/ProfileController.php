@@ -13,9 +13,11 @@ class ProfileController extends Controller
 {
     public function index(Request $request)
     {
+        seo()->page('profile')->noindex();
         $user = $request->user()->load('addresses');
 
         return view('pages.profile', [
+            'recentOrders' => $user->orders()->with('items')->take(4)->get(),
             'stats' => [
                 'orders' => $user->orders()->count(),
                 'saved' => OrderItem::whereIn('order_id', $user->orders()->pluck('id'))->distinct('product_id')->count('product_id'),

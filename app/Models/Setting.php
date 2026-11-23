@@ -20,7 +20,8 @@ class Setting extends Model
         'checkout' => 'Checkout & Delivery',
         'rewards' => 'Rewards & Loyalty',
         'theme' => 'Theme Colors',
-        'seo' => 'SEO & Meta',
+        'seo' => 'SEO & Search',
+        'marketing' => 'Marketing & Tracking',
     ];
 
     public static function allCached(): array

@@ -15,9 +15,12 @@ class PageController extends Controller
 {
     public function home()
     {
+        $trending = Product::active()->where('is_trending', true)->with('category')->get();
+        seo()->page('home')->productList($trending, 'Trending Now');
+
         return view('pages.home', [
             'videos' => Video::where('is_active', true)->orderBy('sort')->get(),
-            'trendingProducts' => Product::active()->where('is_trending', true)->get(),
+            'trendingProducts' => $trending,
             'homeCategories' => Category::active()->where('show_on_home', true)->with('activeProducts')->get(),
             'collectionCategories' => Category::active()->where('show_in_collections', true)->get(),
         ]);
@@ -25,6 +28,8 @@ class PageController extends Controller
 
     public function about()
     {
+        seo()->page('about')->breadcrumbs([['About Us', '/about']])->schema(['@type' => 'AboutPage', 'url' => \App\Support\Seo::baseUrl().'/about', 'about' => ['@id' => \App\Support\Seo::baseUrl().'/#business']]);
+
         return view('pages.about', [
             'testimonials' => Testimonial::where('is_active', true)->orderBy('sort')->get(),
         ]);
@@ -32,9 +37,11 @@ class PageController extends Controller
 
     public function contact()
     {
-        return view('pages.contact', [
-            'faqs' => Faq::where('is_active', true)->orderBy('sort')->get(),
-        ]);
+        $faqs = Faq::where('is_active', true)->orderBy('sort')->get();
+        seo()->page('contact')->breadcrumbs([['Contact', '/contact']])->faqList($faqs)
+            ->schema(['@type' => 'ContactPage', 'url' => \App\Support\Seo::baseUrl().'/contact', 'about' => ['@id' => \App\Support\Seo::baseUrl().'/#business']]);
+
+        return view('pages.contact', ['faqs' => $faqs]);
     }
 
     public function contactStore(Request $request)
@@ -50,7 +57,8 @@ class PageController extends Controller
             'whatsapp_copy' => 'nullable|boolean',
         ]);
         $data['whatsapp_copy'] = $request->boolean('whatsapp_copy');
-        ContactMessage::create($data);
+        ContactMessage::create($data + attribution());
+        track_event('generate_lead', ['form' => 'contact', 'inquiry_type' => $data['inquiry_type'] ?? null]);
 
         return redirect()->to(route('contact').'#contact-form')->with('contact_sent', true);
     }
@@ -80,12 +88,26 @@ class PageController extends Controller
             }
         }
 
-        return view('pages.menu', compact('categories', 'current', 'groups'));
+        $products = collect($groups)->flatMap(fn ($g) => $g['products']);
+        if ($current) {
+            seo()->page('menu')->set([
+                'title' => $current->meta_title ?: $current->name.' — Order Online',
+                'description' => $current->meta_description ?: ($current->subtitle ?: $current->card_description),
+                'image' => $current->image,
+            ])->breadcrumbs([['Menu', '/menu'], [$current->name, '/menu/'.$current->slug]]);
+        } else {
+            seo()->page('menu')->breadcrumbs([['Menu', '/menu']]);
+        }
+        seo()->productList($products->take(30), $current->name ?? 'Menu');
+
+        return view('pages.menu', compact('categories', 'current', 'groups', 'products'));
     }
 
     public function policy(string $slug)
     {
         $page = Page::where('slug', $slug)->where('is_active', true)->with('sections')->firstOrFail();
+        seo()->set(['title' => $page->meta_title ?: $page->title, 'description' => $page->meta_description ?: $page->subtitle])
+            ->breadcrumbs([[$page->title, '/page/'.$page->slug]]);
 
         return view('pages.policy', compact('page'));
     }

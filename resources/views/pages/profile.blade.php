@@ -71,7 +71,7 @@
     </section>
 
     <nav class="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar" id="profileTabs">
-        @foreach(['tab-personal' => 'Personal Details', 'tab-dietary' => 'Dietary & Baking Preferences', 'tab-addresses' => 'Saved Addresses ('.$u->addresses->count().')', 'tab-rewards' => 'Rewards', 'tab-whatsapp' => 'WhatsApp Notifications'] as $id => $label)
+        @foreach(['tab-personal' => 'Personal Details', 'tab-dietary' => 'Dietary & Baking Preferences', 'tab-orders' => 'Order History', 'tab-addresses' => 'Saved Addresses ('.$u->addresses->count().')', 'tab-rewards' => 'Rewards', 'tab-whatsapp' => 'WhatsApp Notifications'] as $id => $label)
         <button class="tab-btn shrink-0 px-5 py-2.5 rounded-full font-label-lg text-label-lg transition-all {{ $loop->first ? 'bg-primary text-on-primary shadow-sm' : 'bg-surface-container-low text-on-surface-variant hover:text-primary hover:bg-surface-container' }}" data-target="{{ $id }}">{{ $label }}</button>
         @endforeach
         <form method="POST" action="{{ route('logout') }}" class="shrink-0 ml-auto">@csrf<button class="px-5 py-2.5 rounded-full font-label-lg text-label-lg bg-surface-container-low text-on-surface-variant hover:text-error transition-all inline-flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">logout</span>Sign out</button></form>
@@ -255,6 +255,36 @@
         </div>
 
         <div class="lg:col-span-4 flex flex-col gap-8">
+            <section class="bg-surface-container-lowest p-6 rounded-2xl shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05),0_2px_6px_-1px_rgba(200,125,56,0.04)]" id="tab-orders">
+                <div class="flex items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-[20px]">receipt_long</span></div>
+                        <h2 class="font-headline-sm text-headline-sm text-primary">{{ $personal->x('orders_title', 'Order History') }}</h2>
+                    </div>
+                    <a href="{{ route('orders.index') }}" class="font-label-md text-label-md text-secondary hover:text-primary whitespace-nowrap">View all →</a>
+                </div>
+                <div class="flex flex-col gap-3">
+                    @forelse($recentOrders as $o)
+                    <div class="p-3.5 rounded-xl bg-surface-container-low flex flex-col gap-2.5">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <a href="{{ route('orders.index') }}" class="font-label-lg text-label-lg text-primary block">#{{ $o->order_number }}</a>
+                                <span class="font-body-sm text-[12px] text-on-surface-variant">{{ $o->created_at->format('d M Y') }} • {{ $o->items->sum('qty') }} {{ \Illuminate\Support\Str::plural('item', $o->items->sum('qty')) }} • {{ money($o->total) }}</span>
+                            </div>
+                            <span class="shrink-0 px-2 py-0.5 rounded-full font-label-sm text-[10px] font-semibold {{ $o->status === 'cancelled' ? 'bg-error-container text-on-error-container' : ($o->isActive() ? 'bg-secondary-fixed text-on-secondary-fixed' : 'bg-surface-container-high text-on-surface-variant') }}">{{ $o->statusLabel() }}</span>
+                        </div>
+                        @if($o->isActive())
+                        <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch gap-2 [&>button]:!py-1.5 [&>button]:!text-[13px] [&>span]:!py-1.5 [&>span]:!text-[13px]">
+                            @include('partials.order-cancel', ['order' => $o, 'compact' => true])
+                        </div>
+                        @endif
+                    </div>
+                    @empty
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">No orders yet. <a href="{{ route('menu') }}" class="text-secondary font-semibold">Explore the menu →</a></p>
+                    @endforelse
+                </div>
+            </section>
+
             <section class="bg-surface-container-lowest p-6 rounded-2xl shadow-[0_4px_20px_-2px_rgba(61,35,20,0.05),0_2px_6px_-1px_rgba(200,125,56,0.04)] relative overflow-hidden" id="tab-rewards">
                 <div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-secondary-fixed/40 blur-2xl pointer-events-none"></div>
                 <div class="flex items-center gap-3 mb-5">

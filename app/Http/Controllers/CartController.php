@@ -15,6 +15,7 @@ class CartController extends Controller
 {
     public function index()
     {
+        seo()->page('cart')->noindex();
         $summary = Cart::summary();
         $inCart = $summary['lines']->pluck('product.id')->all();
 
@@ -30,9 +31,17 @@ class CartController extends Controller
     public function add(Request $request, Product $product)
     {
         abort_unless($product->is_active, 404);
-        Cart::add($product->id, (int) $request->input('qty', 1));
+        $qty = max(1, (int) $request->input('qty', 1));
+        Cart::add($product->id, $qty);
+        track_event('add_to_cart', ['currency' => setting('currency_code', 'INR'), 'value' => (float) $product->price * $qty, 'items' => [self::gaItem($product, $qty)]]);
 
         return back()->with('success', $product->name.' added to your basket.');
+    }
+
+    /** GA4 ecommerce item. */
+    public static function gaItem(Product $p, int $qty, ?float $price = null): array
+    {
+        return ['item_id' => (string) $p->id, 'item_name' => $p->name, 'item_category' => optional($p->category)->name, 'price' => (float) ($price ?? $p->price), 'quantity' => $qty];
     }
 
     public function update(Request $request, Product $product)
@@ -116,7 +125,7 @@ class CartController extends Controller
                 'payment_method' => $data['payment_method'],
                 'payment_status' => 'pending',
                 'label' => $slot && $slot->is_custom ? 'Custom Bake' : null,
-            ]);
+            ] + attribution());
 
             foreach ($summary['lines'] as $line) {
                 $order->items()->create([
@@ -147,6 +156,15 @@ class CartController extends Controller
         });
 
         Cart::clear();
+        track_event('purchase', [
+            'transaction_id' => $order->order_number,
+            'value' => (float) $order->total,
+            'currency' => setting('currency_code', 'INR'),
+            'shipping' => (float) $order->delivery_fee,
+            'coupon' => $order->coupon_code,
+            'payment_type' => $order->payment_method,
+            'items' => $summary['lines']->map(fn ($l) => self::gaItem($l->product, $l->qty))->values()->all(),
+        ]);
         if (! $user) {
             session()->push('guest_orders', $order->id);
         }

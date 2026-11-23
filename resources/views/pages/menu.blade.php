@@ -63,3 +63,9 @@
 </div>
 </div>
 @endsection
+
+@if($products->count())
+@push('scripts')
+<script>(window.cnQueue = window.cnQueue || []).push(['view_item_list', {!! json_encode(['item_list_name' => $current->name ?? 'Menu', 'items' => $products->take(20)->map(fn ($p) => ['item_id' => (string) $p->id, 'item_name' => $p->name, 'price' => (float) $p->price])->values()], JSON_HEX_TAG | JSON_UNESCAPED_UNICODE) !!}]);</script>
+@endpush
+@endif

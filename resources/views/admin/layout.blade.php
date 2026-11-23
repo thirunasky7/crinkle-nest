@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="robots" content="noindex, nofollow">
     <title>@yield('title', 'Dashboard') · {{ setting('site_name', 'Crinkle Nest') }} Admin</title>
     @if(setting('favicon'))<link rel="icon" href="{{ media(setting('favicon')) }}">@endif
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet"/>
